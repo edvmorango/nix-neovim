@@ -1,104 +1,67 @@
-local cmd = vim.cmd
-local fn = vim.fn
-local opt = vim.o
-local g = vim.g
+local g = vim.g -- a table to access global variables
 
--- <leader> key. Defaults to `\`. Some people prefer space.
--- g.mapleader = ' '
--- g.maplocalleader = ' '
+local o = vim.o
 
-opt.compatible = false
+g.filetype = true
+g.on = true
+g.syntax_on = true
 
--- Enable true colour support
-if fn.has('termguicolors') then
-  opt.termguicolors = true
+o.autochdir = true
+
+--true colors
+o.termguicolors = true
+
+o.shortmess = 'F' -- o.shortmess:gsub('F', '') .. 'c'
+o.completeopt = 'menuone,noinsert,noselect'
+
+o.ignorecase = true
+o.smartcase = true
+
+vim.wo.number = true
+
+o.wrap = false
+o.showmode = true
+o.smartindent = true
+o.autoindent = true
+o.softtabstop = 2
+o.shiftwidth = 2
+o.expandtab = true
+o.incsearch = true
+o.mouse = 'a'
+o.history = 1000
+o.whichwrap = o.whichwrap .. '<,>,h,l,[,]'
+vim.wo.linebreak = true
+o.relativenumber = true
+o.textwidth = 120
+o.tabstop = 2
+o.clipboard = o.clipboard .. 'unnamedplus' --copy paste
+o.laststatus = 2
+o.viewoptions = 'folds,options,cursor,unix,slash' --UNIX better support
+o.encoding = 'utf-8'
+o.cmdheight = 2 -- "for echodoc
+
+function Map(mode, lhs, rhs, opts)
+  local options = { noremap = true }
+  if opts then
+    options = vim.tbl_extend('force', options, opts)
+  end
+  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
--- See :h <option> to see what the options do
+Map('i', '<C-d>', '<Esc>')
+Map('n', '<C-d>', '<Esc>')
+Map('v', '<C-d>', '<Esc>')
+Map('s', '<C-d>', '<Esc>')
+Map('x', '<C-d>', '<Esc>')
+Map('o', '<C-d>', '<Esc>')
+Map('!', '<C-d>', '<Esc>')
+Map('l', '<C-d>', '<Esc>')
+Map('c', '<C-d>', '<Esc>')
+Map('t', '<C-d>', '<Esc>')
+Map('', '<C-d>', '<Esc>')
 
--- Search down into subfolders
-opt.path = vim.o.path .. '**'
+vim.opt.scrolloff = 10
+vim.opt.inccommand = 'split'
+vim.opt.undofile = true
 
-opt.number = true
-opt.relativenumber = true
-opt.cursorline = true
-opt.lazyredraw = true
-opt.showmatch = true -- Highlight matching parentheses, etc
-opt.incsearch = true
-opt.hlsearch = true
-
-opt.spell = true
-opt.spelllang = 'en'
-
-opt.expandtab = true
-opt.tabstop = 2
-opt.softtabstop = 2
-opt.shiftwidth = 2
-opt.foldenable = true
-opt.history = 2000
-opt.nrformats = 'bin,hex' -- 'octal'
-opt.undofile = true
-opt.splitright = true
-opt.splitbelow = true
-opt.cmdheight = 0
-
-opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
-
--- Configure Neovim diagnostic messages
-
-local function prefix_diagnostic(prefix, diagnostic)
-  return string.format(prefix .. ' %s', diagnostic.message)
-end
-
-vim.diagnostic.config {
-  virtual_text = {
-    prefix = '',
-    format = function(diagnostic)
-      local severity = diagnostic.severity
-      if severity == vim.diagnostic.severity.ERROR then
-        return prefix_diagnostic('󰅚', diagnostic)
-      end
-      if severity == vim.diagnostic.severity.WARN then
-        return prefix_diagnostic('⚠', diagnostic)
-      end
-      if severity == vim.diagnostic.severity.INFO then
-        return prefix_diagnostic('ⓘ', diagnostic)
-      end
-      if severity == vim.diagnostic.severity.HINT then
-        return prefix_diagnostic('󰌶', diagnostic)
-      end
-      return prefix_diagnostic('■', diagnostic)
-    end,
-  },
-  signs = {
-    text = {
-      -- Requires Nerd fonts
-      [vim.diagnostic.severity.ERROR] = '󰅚',
-      [vim.diagnostic.severity.WARN] = '⚠',
-      [vim.diagnostic.severity.INFO] = 'ⓘ',
-      [vim.diagnostic.severity.HINT] = '󰌶',
-    },
-  },
-  update_in_insert = false,
-  underline = true,
-  severity_sort = true,
-  float = {
-    focusable = false,
-    style = 'minimal',
-    border = 'rounded',
-    source = 'if_many',
-    header = '',
-    prefix = '',
-  },
-}
-
-g.editorconfig = true
-
-vim.opt.colorcolumn = '100'
-
--- Native plugins
-cmd.filetype('plugin', 'indent', 'on')
-cmd.packadd('cfilter') -- Allows filtering the quickfix list with :cfdo
-
--- let sqlite.lua (which some plugins depend on) know where to find sqlite
-vim.g.sqlite_clib_path = require('luv').os_getenv('LIBSQLITE')
+vim.opt.jumpoptions = 'stack,view'
