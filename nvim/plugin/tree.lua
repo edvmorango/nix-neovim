@@ -1,4 +1,3 @@
-require('keys')
 
 
 vim.api.nvim_create_autocmd("QuitPre", {

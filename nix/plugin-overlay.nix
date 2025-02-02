@@ -6,6 +6,7 @@
     };
 in {
   nvimPlugins = {
+    luasnip = mkNvimPlugin inputs.luasnip "luasnip";
     nvim-notify = mkNvimPlugin inputs.nvim-notify "nvim-notify";
     nvim-jqx = mkNvimPlugin inputs.nvim-jqx "nvim-jqx";
     plenary-nvim = mkNvimPlugin inputs.plenary-nvim "plenary-nvim";

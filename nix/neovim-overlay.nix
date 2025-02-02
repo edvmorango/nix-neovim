@@ -26,6 +26,7 @@ with final.pkgs.lib; let
   #   ...
   # }
   all-plugins = with pkgs.nvimPlugins; [
+   luasnip
    nvim-notify
    plenary-nvim
    nvim-cmp

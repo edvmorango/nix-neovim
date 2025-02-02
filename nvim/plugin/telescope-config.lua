@@ -1,4 +1,3 @@
-require('keys')
 
 
 local exec = vim.api.nvim_exec
