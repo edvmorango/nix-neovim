@@ -1,11 +1,12 @@
 --require("lsp_lines").setup()
 --
 --
-require("eagle").setup({
-  -- override the default values found in config.lua
-})
+local eagle = require('eagle')
+local diagflow = require('diagflow')
 
-require('diagflow').setup({
+eagle.setup()
+
+diagflow.setup {
   enable = true,
   max_width = 100,    -- The maximum width of the diagnostic messages
   max_height = 30,    -- the maximum height per diagnostics
@@ -38,7 +39,4 @@ require('diagflow').setup({
     vertical = "│"
   },
   show_borders = false,
-})
-
-
-vim.o.mousemoveevent = true
+}

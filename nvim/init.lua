@@ -34,11 +34,11 @@ vim.wo.linebreak = true
 o.relativenumber = true
 o.textwidth = 120
 o.tabstop = 2
-o.clipboard = o.clipboard .. 'unnamedplus' --copy paste
+o.clipboard = o.clipboard .. 'unnamedplus'        --copy paste
 o.laststatus = 2
 o.viewoptions = 'folds,options,cursor,unix,slash' --UNIX better support
 o.encoding = 'utf-8'
-o.cmdheight = 2 -- "for echodoc
+o.cmdheight = 2                                   -- "for echodoc
 
 function Map(mode, lhs, rhs, opts)
   local options = { noremap = true }
@@ -47,6 +47,10 @@ function Map(mode, lhs, rhs, opts)
   end
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
+
+-- eagle
+o.mousemoveevent = true
+
 
 Map('i', '<C-d>', '<Esc>')
 Map('n', '<C-d>', '<Esc>')
