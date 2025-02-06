@@ -1,1 +1,3 @@
-require('nvim-jqx.config').sort = false
+local jqx = require('nvim-jqx.config')
+
+jqx.sort = false
