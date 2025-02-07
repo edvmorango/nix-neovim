@@ -1,15 +1,4 @@
-
-local g = vim.g
 local cmd = vim.cmd
-
---autosave
-g.auto_save = true
-g.auto_save_silent = true
--- vim-rooter
-g.rooter_manual_only = true
-
--- echodoc
-g.echodoc = { enable_at_startup = true, type = 'virtual' }
 
 -- highlight link EchoDocPopup Pmenu
 
@@ -26,7 +15,7 @@ local highlight = {
 }
 
 
-local hooks = require "ibl.hooks"
+local hooks = require('ibl.hooks')
 -- create the highlight groups in the highlight setup hook, so they are reset
 -- every time the colorscheme changes
 hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
@@ -40,7 +29,8 @@ hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
 end)
 
 -- identline (make a function to enable/disable)
-require("ibl").setup {
+local ibl = require('ibl')
+ibl.setup {
   indent = {
     highlight = highlight,
     char = '╎'
@@ -58,25 +48,22 @@ require("ibl").setup {
 
 }
 
-Map('n', 't', '<cmd>IBLToggle<CR>')
+local ibl_toggle = function() vim.cmd('IBLToggle') end
 
+vim.keymap.set('n', 't', ibl_toggle)
+--Map('n', 't', '<cmd>IBLToggle<CR>')
 
-function ToggleIndentBlankline()
-  if (g.indent_blankline_enabled) then
-    g.indent_blankline_enabled = false
-  else
-    g.indent_blankline_enabled = true
-  end
-end
 
 -- gitgutter
 vim.o.updatetime = 100
 
 -- motion
 --
-require("spider").setup({
+local spider = require("spider")
+
+spider.setup {
   skipInsignificantPunctuation = true
-})
+}
 
 vim.keymap.set({ "n", "o", "x" }, "w", "<cmd>lua require('spider').motion('w')<CR>", { desc = "Spider-w" })
 vim.keymap.set({ "n", "o", "x" }, "e", "<cmd>lua require('spider').motion('e')<CR>", { desc = "Spider-e" })
@@ -86,18 +73,21 @@ vim.keymap.set({ "n", "o", "x" }, "ge", "<cmd>lua require('spider').motion('ge')
 
 --mouse
 
-Map('i', '<ScrollWheelUp>', '<nop>')
-Map('i', '<S-ScrollWheelUp>', '<nop>')
-Map('i', '<C-ScrollWheelUp>', '<nop>')
-Map('i', '<ScrollWheelDown>', '<nop>')
-Map('i', '<S-ScrollWheelDown>', '<nop>')
-Map('i', '<C-ScrollWheelDown>', '<nop>')
-Map('i', '<ScrollWheelLeft>', '<nop>')
-Map('i', '<S-ScrollWheelLeft>', '<nop>')
-Map('i', '<C-ScrollWheelLeft>', '<nop>')
-Map('i', '<ScrollWheelRight>', '<nop>')
-Map('i', '<S-ScrollWheelRight>', '<nop>')
-Map('i', '<C-ScrollWheelRight>', '<nop>')
+local nop = function() end
+
+
+vim.keymap.set('i', '<ScrollWheelUp>', nop)
+vim.keymap.set('i', '<S-ScrollWheelUp>', nop)
+vim.keymap.set('i', '<C-ScrollWheelUp>', nop)
+vim.keymap.set('i', '<ScrollWheelDown>', nop)
+vim.keymap.set('i', '<S-ScrollWheelDown>', nop)
+vim.keymap.set('i', '<C-ScrollWheelDown>', nop)
+vim.keymap.set('i', '<ScrollWheelLeft>', nop)
+vim.keymap.set('i', '<S-ScrollWheelLeft>', nop)
+vim.keymap.set('i', '<C-ScrollWheelLeft>', nop)
+vim.keymap.set('i', '<ScrollWheelRight>', nop)
+vim.keymap.set('i', '<S-ScrollWheelRight>', nop)
+vim.keymap.set('i', '<C-ScrollWheelRight>', nop)
 
 -- ex-mode
 Map('n', 'Q', '<nop>')
@@ -117,13 +107,6 @@ Map('n', '<M-J>', '<C-w>J')
 Map('n', '<M-K>', '<C-w>K')
 Map('n', '<M-L>', '<C-w>L')
 Map('n', '<M-x>', '<C-w>x')
-
--- float term
-g.floaterm_keyMap_new  = '<F7>'
-g.floaterm_keyMap_prev = '<C-w>'
-g.floaterm_keyMap_next = '<C-e>'
-g.floaterm_width       = 0.9
-g.floaterm_height      = 0.9
 
 
 Map('n', '<C-k>', '<cmd>FloatermToggle<CR>')
@@ -149,7 +132,6 @@ Map('n', 'N', '<cmd>lua CenterCursorOnNext(false)<CR>', { silent = true })
 
 
 
-g.timeoutlen = 500
 
 
 -- lsp
@@ -189,9 +171,6 @@ require("fidget").setup()
 -- ctx
 require('nvim_context_vt').setup()
 Map('n', '<C-t>', ':NvimContextVtToggle<CR>', { silent = true })
-
--- subversive
-g.subversivePromptWithActualCommand = 0
 
 --rooter
 

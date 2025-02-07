@@ -2,9 +2,16 @@ local g = vim.g -- a table to access global variables
 
 local o = vim.o
 
+
+
+
+
 g.filetype = true
 g.on = true
 g.syntax_on = true
+
+g.timeoutlen = 500
+
 
 o.autochdir = true
 
@@ -69,3 +76,26 @@ vim.opt.inccommand = 'split'
 vim.opt.undofile = true
 
 vim.opt.jumpoptions = 'stack,view'
+
+
+--autosave
+g.auto_save = true
+g.auto_save_silent = true
+
+-- vim-rooter
+g.rooter_manual_only = true
+
+-- echodoc
+g.echodoc = { enable_at_startup = true, type = 'virtual' }
+
+
+-- float term
+g.floaterm_keyMap_new  = '<F7>'
+g.floaterm_keyMap_prev = '<C-w>'
+g.floaterm_keyMap_next = '<C-e>'
+g.floaterm_width       = 0.9
+g.floaterm_height      = 0.9
+
+
+-- subversive
+g.subversivePromptWithActualCommand = 0
