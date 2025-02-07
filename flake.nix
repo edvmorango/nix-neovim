@@ -8,8 +8,6 @@
 
     flake-utils.url = "github:numtide/flake-utils";
 
-   
-
     nvim-jqx = {
       url = "github:gennaro-tedesco/nvim-jqx";
       flake = false;
@@ -260,10 +258,6 @@
       url = "github:andersevenrud/nvim_context_vt";
       flake = false;
     };
-
-
-
-
   };
 
   outputs = inputs @ {
@@ -284,7 +278,6 @@
     # This is where the Neovim derivation is built.
     neovim-overlay = import ./nix/neovim-overlay.nix {inherit inputs;};
     plugin-overlay = import ./nix/plugin-overlay.nix {inherit inputs;};
-
   in
     flake-utils.lib.eachSystem supportedSystems (system: let
       pkgs = import nixpkgs {
@@ -298,7 +291,6 @@
           # The generated file can be symlinked in the devShell's shellHook.
           gen-luarc.overlays.default
           neovim-nightly.overlays.default
-
         ];
       };
       shell = pkgs.mkShell {

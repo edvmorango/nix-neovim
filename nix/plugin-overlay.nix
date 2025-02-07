@@ -3,6 +3,7 @@
     prev.pkgs.vimUtils.buildVimPlugin {
       inherit pname src;
       version = src.lastModifiedDate;
+      doCheck = false;
     };
 in {
   nvimPlugins = {
@@ -69,3 +70,4 @@ in {
     telescope-rooter-nvim = mkNvimPlugin inputs.telescope-rooter-nvim "telescope-rooter-nvim";
   };
 }
+
