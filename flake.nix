@@ -258,6 +258,11 @@
       url = "github:andersevenrud/nvim_context_vt";
       flake = false;
     };
+
+    substitute-nvim = {
+      url = "github:gbprod/substitute.nvim";
+      flake = false;
+    };
   };
 
   outputs = inputs @ {

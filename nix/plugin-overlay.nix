@@ -7,6 +7,7 @@
     };
 in {
   nvimPlugins = {
+    substitute-nvim = mkNvimPlugin inputs.substitute-nvim "substitute-nvim";
     luasnip = mkNvimPlugin inputs.luasnip "luasnip";
     nvim-notify = mkNvimPlugin inputs.nvim-notify "nvim-notify";
     nvim-jqx = mkNvimPlugin inputs.nvim-jqx "nvim-jqx";
@@ -70,4 +71,3 @@ in {
     telescope-rooter-nvim = mkNvimPlugin inputs.telescope-rooter-nvim "telescope-rooter-nvim";
   };
 }
-

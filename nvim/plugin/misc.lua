@@ -90,27 +90,27 @@ vim.keymap.set('i', '<S-ScrollWheelRight>', nop)
 vim.keymap.set('i', '<C-ScrollWheelRight>', nop)
 
 -- ex-mode
-Map('n', 'Q', '<nop>')
-Map('n', 'gQ', '<nop>')
+vim.keymap.set('n', 'Q', '<nop>')
+vim.keymap.set('n', 'gQ', '<nop>')
 
 
 
 -- window
-Map('n', '<M-h>', '<C-w>h')
-Map('n', '<M-j>', '<C-w>j')
-Map('n', '<M-k>', '<C-w>k')
-Map('n', '<M-l>', '<C-w>l')
+vim.keymap.set('n', '<M-h>', '<C-w>h')
+vim.keymap.set('n', '<M-j>', '<C-w>j')
+vim.keymap.set('n', '<M-k>', '<C-w>k')
+vim.keymap.set('n', '<M-l>', '<C-w>l')
 
 -- Moving
-Map('n', '<M-H>', '<C-w>H')
-Map('n', '<M-J>', '<C-w>J')
-Map('n', '<M-K>', '<C-w>K')
-Map('n', '<M-L>', '<C-w>L')
-Map('n', '<M-x>', '<C-w>x')
+vim.keymap.set('n', '<M-H>', '<C-w>H')
+vim.keymap.set('n', '<M-J>', '<C-w>J')
+vim.keymap.set('n', '<M-K>', '<C-w>K')
+vim.keymap.set('n', '<M-L>', '<C-w>L')
+vim.keymap.set('n', '<M-x>', '<C-w>x')
 
 
-Map('n', '<C-k>', '<cmd>FloatermToggle<CR>')
-Map('t', '<C-k>', '<C-\\><C-n><cmd>FloatermToggle<CR>')
+vim.keymap.set('n', '<C-k>', '<cmd>FloatermToggle<CR>')
+vim.keymap.set('t', '<C-k>', '<C-\\><C-n><cmd>FloatermToggle<CR>')
 
 
 
@@ -127,17 +127,15 @@ function CenterCursorOnNext(forward)
   end
 end
 
-Map('n', 'n', '<cmd>lua CenterCursorOnNext(true)<CR>', { silent = true })
-Map('n', 'N', '<cmd>lua CenterCursorOnNext(false)<CR>', { silent = true })
-
-
-
+vim.keymap.set('n', 'n', '<cmd>lua CenterCursorOnNext(true)<CR>', { silent = true })
+vim.keymap.set('n', 'N', '<cmd>lua CenterCursorOnNext(false)<CR>', { silent = true })
 
 
 -- lsp
-require("inc_rename").setup()
+local inc_rename = require('inc_rename')
+inc_rename.setup()
 
-Map("n", "<leader>r", ':IncRename ') -- the space is relevant
+vim.keymap.set("n", "<leader>r", function() vim.cmd('IncRename') end) -- the space is relevant
 
 
 
@@ -146,15 +144,16 @@ require("tidy").setup({
   filetype_exclude = {},
 })
 
-
-
 --vim-subversive
 
-Map('n', '<leader>s', '<plug>(SubversiveSubvertRange)')
-Map('x', '<leader>s', '<plug>(SubversiveSubvertRange)')
+local substitute = require('substitute')
+substitute.setup()
 
-Map('n', '<leader>ss', '<plug>(SubversiveSubvertWordRange)')
+local range = require('substitute.range')
 
+vim.keymap.set("n", "<leader>s", range.operator, { noremap = true })
+vim.keymap.set("x", "<leader>s", range.visual, { noremap = true })
+vim.keymap.set("n", "<leader>ss", range.word, { noremap = true })
 
 -- undo
 require('yankbank').setup({
@@ -162,27 +161,37 @@ require('yankbank').setup({
   sep = "",
 })
 
-Map('n', 'z', '<cmd>YankBank<CR>', { silent = true })
+vim.keymap.set('n', 'z', '<cmd>YankBank<CR>', { silent = true })
 
 -- fidget
-require("fidget").setup()
+require("fidget").setup {
 
+  integration = {
+    ["nvim-tree"] = {
+      enable = false,
+    }
+
+  }
+
+}
 
 -- ctx
-require('nvim_context_vt').setup()
-Map('n', '<C-t>', ':NvimContextVtToggle<CR>', { silent = true })
+local nvim_context_vt = require('nvim_context_vt')
+nvim_context_vt.setup()
+vim.keymap.set('n', '<C-t>', function() vim.cmd('NvimContextVtToggle') end, { silent = true })
 
 --rooter
-
-require('nvim-rooter').setup({
+local rooter = require('nvim-rooter')
+rooter.setup {
   rooter_patterns = { '.git', '.vimdir' },
   trigger_patterns = { '*' },
   manual = true,
   fallback_to_parent = false,
-})
+}
 
----
-require("conform").setup({
+local conform = require("conform")
+
+conform.setup({
   format_on_save = {
     -- These options will be passed to conform.format()
     timeout_ms = 500,
@@ -210,7 +219,7 @@ local lspstatus = require('lsp-status')
 
 lspstatus.config { status_symbol = 'LSP' }
 
-lspstatus.register_progress()
+-- lspstatus.register_progress()
 
 -- scrollbar
 local scrollbarInit = vim.api.nvim_create_augroup("ScrollbarInit", {})

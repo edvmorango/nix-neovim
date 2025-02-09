@@ -15,7 +15,7 @@ with final.pkgs.lib; let
   pkgs-wrapNeovim = inputs.nixpkgs.legacyPackages.${pkgs.system};
 
   # This is the helper function that builds the Neovim derivation.
-  mkNeovim = pkgs.callPackage ./mkNeovim.nix { inherit pkgs-wrapNeovim; };
+  mkNeovim = pkgs.callPackage ./mkNeovim.nix {inherit pkgs-wrapNeovim;};
 
   # A plugin can either be a package or an attrset, such as
   # { plugin = <plugin>; # the package, e.g. pkgs.vimPlugins.nvim-cmp
@@ -26,67 +26,68 @@ with final.pkgs.lib; let
   #   ...
   # }
   all-plugins = with pkgs.nvimPlugins; [
-   luasnip
-   nvim-notify
-   plenary-nvim
-   nvim-cmp
-   nui-nvim
-   conform-nvim
-   trouble-nvim
-   eagle-nvim
-   diagflow-nvim
-   actions-preview-nvim
-   nvim-spider
-   nvim-rooter-lua
-   nvim-context-vt
-   fidget-nvim
-   nvim-lsp-notify
-   indent-blankline-nvim
-   nvim-treesitter
-   noice-nvim
-   nvim-metals
-   nvim-lspconfig
-   cmp-nvim-lsp
-   lsp-status-nvim
-   nvim-tree-lua
-   nvim-web-devicons
-   lualine-nvim
-   lualine-lsp-progress
-   cmp-luasnip
-   inc-rename-nvim
-   autoclose-nvim
-   vim-rooter
-   vim-scala
-   hlargs-nvim
-   scrollbar-nvim
-   tidy-nvim
-   nvim-nio
-   neotest
-   neotest-plenary
-   neotest-scala
-   onenord-nvim
-   nvim-navic
-   undotree
-   rustaceanvim
-   nvim-scissors
-   lspkind-nvim
-   yankbank-nvim
-   unicode-vim
-   vim-illuminate
-   highlight-undo-nvim
-   vim-cabalfmt
-   telescope-nvim
-   telescope-lsp-handlers-nvim
-   telescope-media-files-nvim
-   telescope-hoogle-nvim
-   telescope-ui-select-nvim
-   telescope-undo-nvim
-   search-nvim
-   easypick-nvim
-   telescope-glyph-nvim
-   telescope-symbols-nvim
-   telescope-rooter-nvim
-   nvim-jqx
+    substitute-nvim
+    luasnip
+    nvim-notify
+    plenary-nvim
+    nvim-cmp
+    nui-nvim
+    conform-nvim
+    trouble-nvim
+    eagle-nvim
+    diagflow-nvim
+    actions-preview-nvim
+    nvim-spider
+    nvim-rooter-lua
+    nvim-context-vt
+    fidget-nvim
+    nvim-lsp-notify
+    indent-blankline-nvim
+    nvim-treesitter
+    noice-nvim
+    nvim-metals
+    nvim-lspconfig
+    cmp-nvim-lsp
+    lsp-status-nvim
+    nvim-tree-lua
+    nvim-web-devicons
+    lualine-nvim
+    lualine-lsp-progress
+    cmp-luasnip
+    inc-rename-nvim
+    autoclose-nvim
+    vim-rooter
+    vim-scala
+    hlargs-nvim
+    scrollbar-nvim
+    tidy-nvim
+    nvim-nio
+    neotest
+    neotest-plenary
+    neotest-scala
+    onenord-nvim
+    nvim-navic
+    undotree
+    rustaceanvim
+    nvim-scissors
+    lspkind-nvim
+    yankbank-nvim
+    unicode-vim
+    vim-illuminate
+    highlight-undo-nvim
+    vim-cabalfmt
+    telescope-nvim
+    telescope-lsp-handlers-nvim
+    telescope-media-files-nvim
+    telescope-hoogle-nvim
+    telescope-ui-select-nvim
+    telescope-undo-nvim
+    search-nvim
+    easypick-nvim
+    telescope-glyph-nvim
+    telescope-symbols-nvim
+    telescope-rooter-nvim
+    nvim-jqx
   ];
 
   # Right now, I'm binding these on `home.nix`
