@@ -6,11 +6,7 @@ notify.setup()
 vim.notify = notify
 
 
-function DismissNotification()
-  notify.dismiss({ pending = true, silent = true })
-end
-
-Map("n", "<leader>d", '<cmd>lua DismissNotification()<CR>')
+vim.keymap.set('n', '<leader>d', function() notify.dismiss { pending = true, silent = true } end)
 
 -- Utility functions shared between progress reports for LSP and DAP
 

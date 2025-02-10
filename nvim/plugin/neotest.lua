@@ -1,4 +1,4 @@
-require('neotest').setup({
+require('neotest').setup {
   adapters = {
     require('neotest-plenary'),
     require('neotest-scala')({
@@ -16,4 +16,4 @@ require('neotest').setup({
       framework = 'munit',
     })
   }
-})
+}

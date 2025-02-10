@@ -1,7 +1,3 @@
-
-
-local exec = vim.api.nvim_exec
-
 local builtin = require('telescope.builtin')
 
 local telescope = require('telescope')
@@ -238,19 +234,19 @@ Map('n', 'gws', '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>', { silent = true }
 --
 
 function RootFiles()
-  exec(':Rooter', '<CR>')
-  exec(':Telescope find_files', '<CR>')
+  vim.cmd('Rooter')
+  vim.cmd('Telescope find_files')
 end
 
 function RootSearch()
-  exec(':Rooter', '<CR>')
+  vim.cmd('Rooter')
   require('search').open()
   -- exec(":lua require('search').open()")
 end
 
 function RootGrep()
-  exec(':Rooter', '<CR>')
-  exec(':Telescope live_grep', '<CR>')
+  vim.cmd('Rooter')
+  vim.cmd('Telescope live_grep')
 end
 
 -- Map('n', '<C-p>', '<cmd>lua RootFiles()<CR>', { silent = true })

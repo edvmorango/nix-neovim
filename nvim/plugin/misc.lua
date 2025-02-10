@@ -133,16 +133,18 @@ vim.keymap.set('n', 'N', '<cmd>lua CenterCursorOnNext(false)<CR>', { silent = tr
 
 -- lsp
 local inc_rename = require('inc_rename')
-inc_rename.setup()
+inc_rename.setup({})
 
 vim.keymap.set("n", "<leader>r", function() vim.cmd('IncRename') end) -- the space is relevant
 
 
 
 -- tidy (remove trailing spaces)
-require("tidy").setup({
+local tidy = require("tidy")
+
+tidy.setup {
   filetype_exclude = {},
-})
+}
 
 --vim-subversive
 
@@ -156,15 +158,19 @@ vim.keymap.set("x", "<leader>s", range.visual, { noremap = true })
 vim.keymap.set("n", "<leader>ss", range.word, { noremap = true })
 
 -- undo
-require('yankbank').setup({
+local yankbank = require('yankbank')
+
+yankbank.setup({
   max_entries = 12,
   sep = "",
 })
 
-vim.keymap.set('n', 'z', '<cmd>YankBank<CR>', { silent = true })
+vim.keymap.set('n', 'z', function() vim.cmd('YankBank') end, { silent = true })
 
 -- fidget
-require("fidget").setup {
+local fidget = require("fidget")
+
+fidget.setup {
 
   integration = {
     ["nvim-tree"] = {
@@ -182,6 +188,7 @@ vim.keymap.set('n', '<C-t>', function() vim.cmd('NvimContextVtToggle') end, { si
 
 --rooter
 local rooter = require('nvim-rooter')
+
 rooter.setup {
   rooter_patterns = { '.git', '.vimdir' },
   trigger_patterns = { '*' },
@@ -224,7 +231,7 @@ lspstatus.config { status_symbol = 'LSP' }
 -- scrollbar
 local scrollbarInit = vim.api.nvim_create_augroup("ScrollbarInit", {})
 
-require("autoclose").setup({})
+require("autoclose").setup {}
 
 
 vim.api.nvim_create_autocmd({ 'WinScrolled', 'VimResized', 'QuitPre' },
@@ -249,28 +256,10 @@ vim.api.nvim_create_autocmd({ 'WinLeave', 'BufLeave', 'BufWinLeave', 'FocusLost'
 )
 
 
--- undo highligted
-require('highlight-undo').setup({
-  duration = 300,
-  keymaps = {
-    Keymap_name = {
-      -- most fields here are the same as in vim.keymap.set
-      desc = "a description",
-      hlgroup = 'HighlightUndo',
-      mode = 'n',
-      lhs = 'lhs',
-      rhs = 'optional, can be nil',
-      opts = {
-        -- same as opts to vim.keymap.set. if rhs is nil, there should be a
-        -- callback key which points to a function
-      },
-    },
-  },
-})
-
-
 -- illuminate tokens
-require('illuminate').configure({
+local illuminate = require('illuminate')
+--
+illuminate.configure({
   -- providers: provider used to get references in the buffer, ordered by priority
   providers = {
     'lsp',
@@ -320,7 +309,7 @@ require('illuminate').configure({
   -- should_enable: a callback that overrides all other settings to
   -- enable/disable illumination. This will be called a lot so don't do
   -- anything expensive in it.
-  should_enable = function(bufnr) return true end,
+  should_enable = function(_bufnr) return true end,
   -- case_insensitive_regex: sets regex case sensitivity
   case_insensitive_regex = false,
 })
