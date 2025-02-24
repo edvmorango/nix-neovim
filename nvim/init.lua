@@ -46,6 +46,9 @@ o.laststatus = 2
 o.viewoptions = 'folds,options,cursor,unix,slash' --UNIX better support
 o.encoding = 'utf-8'
 o.cmdheight = 2                                   -- "for echodoc
+g.loaded_netrw = 1
+g.loaded_netrwPlugin = 1
+
 
 function Map(mode, lhs, rhs, opts)
   local options = { noremap = true }
@@ -76,6 +79,12 @@ vim.opt.inccommand = 'split'
 vim.opt.undofile = true
 
 vim.opt.jumpoptions = 'stack,view'
+
+
+
+vim.opt.termguicolors = true
+vim.opt.list = true
+vim.opt.listchars:append('space:·, nbsp:␣')
 
 
 --autosave

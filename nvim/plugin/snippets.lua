@@ -1,5 +1,7 @@
-require("scissors").setup {
-  snippetDir = "/home/edvmorango/.config/nixpkgs/programs/neovim/snippets",
+local scissors = require("scissors")
+
+scissors.setup {
+  snippetDir = "/home/$USER/.config/nixpkgs/programs/neovim/snippets",
   editSnippetPopup = {
     height = 0.8, -- relative to the window, number between 0 and 1
     width = 0.8,

@@ -1,4 +1,3 @@
-
 local metals_config = require('metals').bare_config()
 
 metals_config.settings = {
@@ -11,7 +10,7 @@ metals_config.settings = {
 }
 
 metals_config.init_options.statusBarProvider = "off"
-metals_config.settings.serverVersion = "1.4.2"
+metals_config.settings.serverVersion = "1.5.1"
 -- Example if you are using cmp how to make sure the correct capabilities for snippets are set
 
 -- local capabilities = require('coq').lsp_ensure_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -22,7 +21,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protoc
 metals_config.capabilities = capabilities
 
 
-metals_config.on_attach = function(client, bufnr)
+metals_config.on_attach = function(client, _bufnr)
   require('metals')
   require('lsp-status').on_attach(client)
 end
