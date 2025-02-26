@@ -3,11 +3,17 @@ local builtin = require('telescope.builtin')
 local telescope = require('telescope')
 
 
-require('notify').setup()
+local notify = require('notify')
 
-require('trouble').setup()
+notify.setup()
 
-require('nvim-web-devicons').setup {
+local trouble = require('trouble')
+
+trouble.setup()
+
+local nvim_web_devicons = require('nvim-web-devicons')
+
+nvim_web_devicons.setup {
   -- DevIcon will be appended to `name`
   override = {
     zsh = {
@@ -33,20 +39,14 @@ telescope.load_extension('ui-select')
 telescope.load_extension('notify')
 telescope.load_extension('lsp_handlers')
 telescope.load_extension("undo")
-
-
-
-
-
+telescope.load_extension("glyph")
 
 local resolve = require("telescope.config.resolve")
-
 
 TelescopeLayoutConfigVertical = {
   horizontal = { width = 0.9 },
   width = resolve.resolve_width(0.9),
   height = resolve.resolve_height(0.99),
-  -- preview_height = resolve.resolve_height(0.75),
   prompt_position = "bottom"
 }
 
@@ -130,9 +130,10 @@ telescope.setup {
 
 
 
-telescope.load_extension("glyph")
 
-require("search").setup({
+local search = require("search")
+
+search.setup {
   append_tabs = { -- append_tabs will add the provided tabs to the default ones
     {
       name = "Changed Files",
@@ -152,7 +153,7 @@ require("search").setup({
     }
   }
 
-})
+}
 
 
 
@@ -167,8 +168,7 @@ Map('n', '<leader>qq', '<cmd>Telescope quickfix<CR>', { silent = true })
 
 -- Metals
 
-Map('n', '<space>c', '<cmd>lua Call_server_ui()<CR>',
-  { silent = true })
+Map('n', '<space>c', '<cmd>lua Call_server_ui()<CR>', { silent = true })
 
 function Call_server_ui()
   local current_file = vim.bo.filetype
