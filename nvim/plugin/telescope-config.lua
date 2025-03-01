@@ -184,24 +184,14 @@ function CodeAction()
   actions_preview.code_actions()
 end
 
-Map('n', '<space>d', '<cmd>Telescope diagnostics<CR>', { silent = true })
-Map('n', '<space>s', '<cmd>MetalsSuperMethodHierarchy<CR>', { silent = true })
---Map('n', '<space>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', { silent = true })
-Map('n', '<space>a', '<cmd>lua CodeAction()<CR>', { silent = true })
--- Map('n', '<space>z', '<cmd>Telescope undo<CR>', { silent = true })
+vim.keymap.set('n', "<space>d", function() builtin.diagnostics() end, { silent = true })
+vim.keymap.set('n', "<space>a", function() actions_preview.code_actions() end, { silent = true })
+
+--vim.keymap.set('n', "<space>s", function() vim.cmd('MetalsSuperMethodHierarchy') end, { silent = true })
 
 
 
 
-
--- nnoremap <silent> <space>d  :<C-u>Telescope diagnostics<cr>
--- nnoremap <silent> <space>s  :<C-u>Telescope lsp_document_symbol<cr>
--- nnoremap <silent> <space>a  :<C-u>Telescope lsp_code_actions<cr>
-
---nmap <silent> gd <cmd>Telescope lsp_definitions<cr>
---nmap <silent> gy <cmd>Telescope lsp_type_definitions<cr>
---nmap <silent> gi <cmd>Telescope lsp_implementations<cr>
---nmap <silent> gr <cmd>Telescope lsp_references<cr>
 
 
 Map('n', 'gd', '<cmd>Telescope lsp_definitions<CR>', { silent = true })

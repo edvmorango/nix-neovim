@@ -44,11 +44,3 @@ local function update_spinner(client_id, token)
     end, 100)
   end
 end
-
-local function format_title(title, client_name)
-  return client_name .. (#title > 0 and ": " .. title or "")
-end
-
-local function format_message(message, percentage)
-  return (percentage and percentage .. "%\t" or "") .. (message or "")
-end
