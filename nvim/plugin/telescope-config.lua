@@ -17,19 +17,20 @@ nvim_web_devicons.setup {
   -- DevIcon will be appended to `name`
   override = {
     zsh = {
-      icon = "",
-      color = "#428850",
-      name = "Zsh"
+      icon = '',
+      color = '#428850',
+      name = 'Zsh'
     }
   },
   default = true,
 }
-local actions_preview = require("actions-preview")
+
+local actions_preview = require('actions-preview')
 
 actions_preview.setup {
   telescope = {
-    sorting_strategy = "ascending",
-    layout_strategy = "vertical",
+    sorting_strategy = 'ascending',
+    layout_strategy = 'vertical',
     layout_config = TelescopeLayoutConfigVertical },
 }
 
@@ -38,18 +39,17 @@ actions_preview.setup {
 telescope.load_extension('ui-select')
 telescope.load_extension('notify')
 telescope.load_extension('lsp_handlers')
-telescope.load_extension("undo")
-telescope.load_extension("glyph")
+telescope.load_extension('undo')
+telescope.load_extension('glyph')
 
-local resolve = require("telescope.config.resolve")
+local resolve = require('telescope.config.resolve')
 
 TelescopeLayoutConfigVertical = {
   horizontal = { width = 0.9 },
   width = resolve.resolve_width(0.9),
   height = resolve.resolve_height(0.99),
-  prompt_position = "bottom"
+  prompt_position = 'bottom'
 }
-
 
 TelescopeLayoutConfigHorizontal = {
   vertical = { width = 0.9 },
@@ -59,36 +59,31 @@ TelescopeLayoutConfigHorizontal = {
 }
 
 
-
-local actions = require("telescope.actions")
-local open_with_trouble = require("trouble.sources.telescope").open
-local add_to_trouble = require("trouble.sources.telescope").add
-
 telescope.setup {
   defaults = {
     --mappings = {
-    --  n = { ["<space>d"]  = open_with_truble, ["<c-d>"]  = open_with_truble  }
+    --  n = { ['<space>d']  = open_with_truble, ['<c-d>']  = open_with_truble  }
     --},
     -- Default configuration for telescope goes here:
     -- config_key = value,
     -- ..
-    layout_strategy = "horizontal",
+    layout_strategy = 'horizontal',
     layout_config = TelescopeLayoutConfigHorizontal,
     vimgrep_arguments = {
-      "rg",
-      "--color=never",
-      "--no-heading",
-      "--with-filename",
-      "--line-number",
-      "--column",
-      "--smart-case",
-      "--fixed-strings"
+      'rg',
+      '--color=never',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case',
+      '--fixed-strings'
     },
-    path_display = { "smart" }
+    path_display = { 'smart' }
   },
   pickers = {
     git_files = {
-      git_command = { "git", "ls-files", "--m" }
+      git_command = { 'git', 'ls-files', '--m' }
     }
     -- Default configuration for builtin pickers goes here:
     -- picker_name = {
@@ -112,7 +107,7 @@ telescope.setup {
       },
       rooter = {
         enable = true,
-        patterns = { ".git" }
+        patterns = { '.git' }
       }
 
     },
@@ -120,8 +115,8 @@ telescope.setup {
     glyph = {
       action = function(glyph)
         -- argument glyph is a table.
-        -- {name="", value="", category="", description=""}
-        vim.fn.setreg("*", glyph.value)
+        -- {name='', value='', category='', description=''}
+        vim.fn.setreg('*', glyph.value)
         vim.api.nvim_put({ glyph.value }, 'c', false, true)
       end,
     }
@@ -131,113 +126,65 @@ telescope.setup {
 
 
 
-local search = require("search")
+local search = require('search')
 
 search.setup {
   append_tabs = { -- append_tabs will add the provided tabs to the default ones
     {
-      name = "Changed Files",
+      name = 'Changed Files',
       tele_func = builtin.git_files
       ,
       available = function()
-        return vim.fn.isdirectory(".git") == 1
+        return vim.fn.isdirectory('.git') == 1
       end
     },
   },
   tabs = {
-    { "Files",
+    { 'Files',
       builtin.find_files
     },
-    { "Grep",
+    { 'Grep',
       builtin.live_grep
     }
   }
 
 }
 
-
-
---Find files using Telescope command-line sugar.
---Map('n', '<leader>g', '<cmd>Telescope live_grep<CR>', { silent = true })
-Map('n', '<leader>g', '<cmd>lua require("search").open({tab_id = 3})<CR>', { silent = true })
-
---Map('n', '<leader>p', '<cmd>Telescope find_files<CR>', { silent = true })
-Map('n', '<leader>fb', '<cmd>Telescope buffers<CR>', { silent = true })
-Map('n', '<leader>fh', '<cmd>Telescope help_tags<CR>', { silent = true })
-Map('n', '<leader>qq', '<cmd>Telescope quickfix<CR>', { silent = true })
-
--- Metals
-
-Map('n', '<space>c', '<cmd>lua Call_server_ui()<CR>', { silent = true })
-
-function Call_server_ui()
+local function telescope_server_ui()
   local current_file = vim.bo.filetype
 
-  if (current_file == "scala" or current_file == "sbt") then
-    require("telescope").extensions.metals.commands(TelescopeLayoutConfigVertical)
+  if (current_file == 'scala' or current_file == 'sbt') then
+    require('telescope').extensions.metals.commands(TelescopeLayoutConfigVertical)
   end
 end
 
--- nnoremap <silent> <space>c  :<C-u>lua require("telescope").extensions.metals.commands()<cr>
+vim.keymap.set('n', '<space>c', telescope_server_ui, { silent = true })
 
-function CodeAction()
-  actions_preview.code_actions()
-end
-
-vim.keymap.set('n', "<space>d", function() builtin.diagnostics() end, { silent = true })
-vim.keymap.set('n', "<space>a", function() actions_preview.code_actions() end, { silent = true })
-
---vim.keymap.set('n', "<space>s", function() vim.cmd('MetalsSuperMethodHierarchy') end, { silent = true })
+vim.keymap.set('n', '<leader>g', function() search.open({ tab_id = 3 }) end, { silent = true })
+vim.keymap.set('n', '<leader>fb', builtin.buffers, { silent = true })
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, { silent = true })
+vim.keymap.set('n', '<leader>qq', builtin.quickfix, { silent = true })
+vim.keymap.set('n', '<space>d', builtin.diagnostics, { silent = true })
+vim.keymap.set('n', '<space>a', actions_preview.code_actions, { silent = true })
 
 
 
 
 
+vim.keymap.set('n', 'gd', builtin.lsp_definitions, { silent = true })
+vim.keymap.set('n', 'gy', builtin.lsp_type_definitions, { silent = true })
+vim.keymap.set('n', 'gi', builtin.lsp_implementations, { silent = true })
+vim.keymap.set('n', 'gr', builtin.lsp_references, { silent = true })
+vim.keymap.set('n', '<C-l>', builtin.lsp_dynamic_workspace_symbols, { silent = true })
+vim.keymap.set('n', '<C-s>', function() builtin.symbols { sources = { 'math' } } end, { silent = true })
 
-Map('n', 'gd', '<cmd>Telescope lsp_definitions<CR>', { silent = true })
-Map('n', 'gy', '<cmd>Telescope lsp_type_definitions<CR>', { silent = true })
-Map('n', 'gi', '<cmd>Telescope lsp_implementations<CR>', { silent = true })
-Map('n', 'gr', '<cmd>Telescope lsp_references<CR>', { silent = true })
-Map('n', '<C-l>', '<cmd>Telescope lsp_dynamic_workspace_symbols<CR>', { silent = true })
-Map('n', '<C-s>', '<cmd>lua require("telescope.builtin").symbols{ sources = {"math"} }<CR>', { silent = true })
+vim.keymap.set('n', 'K', vim.lsp.buf.hover, { silent = true })
+vim.keymap.set('n', 'gs', vim.lsp.buf.document_symbol, { silent = true })
+vim.keymap.set('n', 'gw', vim.lsp.buf.workspace_symbol, { silent = true })
 
-
-
-
--- nnoremap <silent> K           <cmd>lua vim.lsp.buf.hover()<CR>
--- nnoremap <silent> gds         <cmd>lua vim.lsp.buf.document_symbol()<CR>
--- nnoremap <silent> gws         <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
-
-
-Map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { silent = true })
-Map('n', 'gds', '<cmd>lua vim.lsp.buf.document_symbol()<CR>', { silent = true })
-Map('n', 'gws', '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>', { silent = true })
-
--- nnoremap <silent> <space>h  :<C-u>Telescope hoogle<cr>
-
---Map('n', 'z', '<cmd>Telescope neoclip a extra=star,plus,b<CR>', { silent = true })
-
-
-
--- nnoremap <silent> <C-p> <cmd>Telescope find_files<cr>
--- nmap <silent> z <cmd>Telescope neoclip a extra=star,plus,b<cr>
---
-
-function RootFiles()
-  vim.cmd('Rooter')
-  vim.cmd('Telescope find_files')
-end
-
-function RootSearch()
-  vim.cmd('Rooter')
-  require('search').open()
-  -- exec(":lua require('search').open()")
-end
-
-function RootGrep()
-  vim.cmd('Rooter')
-  vim.cmd('Telescope live_grep')
-end
-
--- Map('n', '<C-p>', '<cmd>lua RootFiles()<CR>', { silent = true })
-Map('n', '<C-g>', '<cmd>lua RootSearch()<CR>', { silent = true })
+vim.keymap.set('n', '<C-g>',
+  function()
+    vim.cmd('Rooter')
+    require('search').open()
+    -- exec(':lua require('search').open()')
+  end, { silent = true })
