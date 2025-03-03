@@ -263,6 +263,21 @@
       url = "github:gbprod/substitute.nvim";
       flake = false;
     };
+
+    gitsigns-nvim = {
+      url = "github:lewis6991/gitsigns.nvim";
+      flake = false;
+    };
+
+    nvim-unception = {
+      url = "github:samjwill/nvim-unception";
+      flake = false;
+    };
+
+    nvim-surround = {
+      url = "github:kylechui/nvim-surround";
+      flake = false;
+    };
   };
 
   outputs = inputs @ {

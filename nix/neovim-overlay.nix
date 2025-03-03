@@ -26,6 +26,9 @@ with final.pkgs.lib; let
   #   ...
   # }
   all-plugins = with pkgs.nvimPlugins; [
+    nvim-unception
+    nvim-surround
+    gitsigns-nvim
     substitute-nvim
     luasnip
     nvim-notify

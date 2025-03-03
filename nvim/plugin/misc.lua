@@ -52,8 +52,23 @@ local ibl_toggle = function() vim.cmd('IBLToggle') end
 
 vim.keymap.set('n', 't', ibl_toggle)
 --Map('n', 't', '<cmd>IBLToggle<CR>')
--- gitgutter
+-- git
+local gitsigns = require('gitsigns')
+
+gitsigns.setup()
+
 vim.o.updatetime = 100
+
+
+
+-- surround
+
+local surround = require('nvim-surround')
+
+surround.setup()
+
+
+
 
 -- motion
 --

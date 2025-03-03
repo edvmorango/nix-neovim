@@ -7,6 +7,9 @@
     };
 in {
   nvimPlugins = {
+    nvim-unception = mkNvimPlugin inputs.nvim-unception "nvim-unception";
+    nvim-surround = mkNvimPlugin inputs.nvim-surround "nvim-surround";
+    gitsigns-nvim = mkNvimPlugin inputs.gitsigns-nvim "gitsigns-nvim";
     substitute-nvim = mkNvimPlugin inputs.substitute-nvim "substitute-nvim";
     luasnip = mkNvimPlugin inputs.luasnip "luasnip";
     nvim-notify = mkNvimPlugin inputs.nvim-notify "nvim-notify";
