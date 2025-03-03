@@ -1,4 +1,4 @@
-local parsers_path = "/home/edvmorango/.treesitter/parsers"
+local parsers_path = "/home/$USER/.treesitter/parsers"
 
 vim.opt.runtimepath:append(parsers_path)
 

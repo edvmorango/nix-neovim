@@ -1,10 +1,10 @@
-vim.api.nvim_create_autocmd("QuitPre", {
+vim.api.nvim_create_autocmd('QuitPre', {
   callback = function()
     local invalid_win = {}
     local wins = vim.api.nvim_list_wins()
     for _, w in ipairs(wins) do
       local bufname = vim.api.nvim_buf_get_name(vim.api.nvim_win_get_buf(w))
-      if bufname:match("NvimTree_") ~= nil then
+      if bufname:match('NvimTree_') ~= nil then
         table.insert(invalid_win, w)
       end
     end
@@ -17,16 +17,18 @@ vim.api.nvim_create_autocmd("QuitPre", {
 
 
 
+local nvim_tree = require('nvim-tree')
 
+local api = require('nvim-tree.api')
 
-require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
+nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
   auto_reload_on_write = true,
   disable_netrw = false,
   hijack_cursor = false,
   hijack_netrw = true,
   hijack_unnamed_buffer_when_opening = false,
   sort = {
-    sorter = "name",
+    sorter = 'name',
     folders_first = true,
   },
   root_dirs = {},
@@ -34,24 +36,24 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
   sync_root_with_cwd = false,
   reload_on_bufenter = false,
   respect_buf_cwd = true,
-  on_attach = "default",
+  on_attach = 'default',
   select_prompts = false,
   view = {
     centralize_selection = false,
     cursorline = true,
     debounce_delay = 15,
     width = 30,
-    side = "left",
+    side = 'left',
     preserve_window_proportions = true,
     number = false,
     relativenumber = false,
-    signcolumn = "yes",
+    signcolumn = 'yes',
     float = {
       enable = false,
       quit_on_focus_loss = true,
       open_win_config = {
-        relative = "editor",
-        border = "rounded",
+        relative = 'editor',
+        border = 'rounded',
         width = 30,
         height = 30,
         row = 1,
@@ -64,27 +66,27 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
     group_empty = true,
     highlight_git = false,
     full_name = true,
-    highlight_opened_files = "none",
-    highlight_modified = "none",
-    root_folder_label = ":~:s?$?/..?",
+    highlight_opened_files = 'none',
+    highlight_modified = 'none',
+    root_folder_label = ':~:s?$?/..?',
     indent_width = 2,
     indent_markers = {
       enable = false,
       inline_arrows = true,
       icons = {
-        corner = "└",
-        edge = "│",
-        item = "│",
-        bottom = "─",
-        none = " ",
+        corner = '└',
+        edge = '│',
+        item = '│',
+        bottom = '─',
+        none = ' ',
       },
     },
     icons = {
       webdev_colors = true,
-      git_placement = "before",
-      modified_placement = "after",
-      padding = " ",
-      symlink_arrow = " ➛ ",
+      git_placement = 'before',
+      modified_placement = 'after',
+      padding = ' ',
+      symlink_arrow = ' ➛ ',
       show = {
         file = true,
         folder = true,
@@ -93,32 +95,32 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
         modified = true,
       },
       glyphs = {
-        default = "",
-        symlink = "",
-        bookmark = "󰆤",
-        modified = "●",
+        default = '',
+        symlink = '',
+        bookmark = '󰆤',
+        modified = '●',
         folder = {
-          arrow_closed = "",
-          arrow_open = "",
-          default = "",
-          open = "",
-          empty = "",
-          empty_open = "",
-          symlink = "",
-          symlink_open = "",
+          arrow_closed = '',
+          arrow_open = '',
+          default = '',
+          open = '',
+          empty = '',
+          empty_open = '',
+          symlink = '',
+          symlink_open = '',
         },
         git = {
-          unstaged = "✗",
-          staged = "✓",
-          unmerged = "",
-          renamed = "➜",
-          untracked = "★",
-          deleted = "",
-          ignored = "◌",
+          unstaged = '✗',
+          staged = '✓',
+          unmerged = '',
+          renamed = '➜',
+          untracked = '★',
+          deleted = '',
+          ignored = '◌',
         },
       },
     },
-    special_files = { "Cargo.toml", "Makefile", "README.md", "readme.md" },
+    special_files = { 'Cargo.toml', 'Makefile', 'README.md', 'readme.md' },
     symlink_destination = true,
   },
   hijack_directories = {
@@ -131,7 +133,7 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
     ignore_list = {},
   },
   system_open = {
-    cmd = "",
+    cmd = '',
     args = {},
   },
   diagnostics = {
@@ -144,10 +146,10 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
       max = vim.diagnostic.severity.ERROR,
     },
     icons = {
-      hint = "",
-      info = "",
-      warning = "",
-      error = "",
+      hint = '',
+      info = '',
+      warning = '',
+      error = '',
     },
   },
   filters = {
@@ -155,8 +157,8 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
     dotfiles = false,
     git_clean = false,
     no_buffer = false,
-    custom = { "^.git$" },
-    exclude = { ".envrc" },
+    custom = { '^.git$' },
+    exclude = { '.envrc' },
   },
   filesystem_watchers = {
     enable = true,
@@ -190,9 +192,9 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
       open_win_config = {
         col = 1,
         row = 1,
-        relative = "cursor",
-        border = "shadow",
-        style = "minimal",
+        relative = 'cursor',
+        border = 'shadow',
+        style = 'minimal',
       },
     },
     open_file = {
@@ -201,11 +203,11 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
       resize_window = true,
       window_picker = {
         enable = true,
-        picker = "default",
-        chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+        picker = 'default',
+        chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890',
         exclude = {
-          filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
-          buftype = { "nofile", "terminal", "help" },
+          filetype = { 'notify', 'packer', 'qf', 'diff', 'fugitive', 'fugitiveblame' },
+          buftype = { 'nofile', 'terminal', 'help' },
         },
       },
     },
@@ -214,10 +216,10 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
     },
   },
   trash = {
-    cmd = "gio trash",
+    cmd = 'gio trash',
   },
   live_filter = {
-    prefix = "[FILTER]: ",
+    prefix = '[FILTER]: ',
     always_show_folders = true,
   },
   tab = {
@@ -253,14 +255,12 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
     },
   },
 }
-local exec = vim.api.nvim_exec
 
 
 function NvimTreeToggleRoot()
-  exec(':Rooter', '<CR>')
-  exec(':NvimTreeToggle', '<CR>')
+  vim.cmd('Rooter')
+  api.tree.toggle()
 end
 
-Mapf('n', '<C-F>', "<cmd>lua NvimTreeToggleRoot()<CR>")
-
-Map('n', '<leader>ff', '<cmd>NvimTreeToggle<CR>', { silent = true })
+vim.keymap.set('n', '<C-F>', NvimTreeToggleRoot, { silent = true })
+vim.keymap.set('n', '<leader>ff', api.tree.toggle, { silent = true })
