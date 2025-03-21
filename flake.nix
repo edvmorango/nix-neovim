@@ -278,6 +278,11 @@
       url = "github:kylechui/nvim-surround";
       flake = false;
     };
+
+    evergarden = {
+      url = "github:comfysage/evergarden";
+      flake = false;
+    };
   };
 
   outputs = inputs @ {
