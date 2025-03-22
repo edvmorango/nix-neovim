@@ -26,6 +26,7 @@ with final.pkgs.lib; let
   #   ...
   # }
   all-plugins = with pkgs.nvimPlugins; [
+    evergarden
     nvim-unception
     nvim-surround
     gitsigns-nvim

@@ -36,4 +36,10 @@ onenord.setup({
 })
 
 
-cmd('colorscheme onenord')
+local evergarden = require('evergarden')
+
+evergarden.setup()
+
+
+-- cmd('colorscheme onenord')
+cmd('colorscheme evergarden')

@@ -128,6 +128,22 @@
         "type": "github"
       }
     },
+    "evergarden": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1742567518,
+        "narHash": "sha256-J+feL1JVOxl4CoZOwt08gVelvU0/ue5sEzexA9iGFsw=",
+        "owner": "comfysage",
+        "repo": "evergarden",
+        "rev": "154f6326fd5b870674412093dcfd2fa90aa78a31",
+        "type": "github"
+      },
+      "original": {
+        "owner": "comfysage",
+        "repo": "evergarden",
+        "type": "github"
+      }
+    },
     "fidget-nvim": {
       "flake": false,
       "locked": {
@@ -1106,6 +1122,7 @@
         "diagflow-nvim": "diagflow-nvim",
         "eagle-nvim": "eagle-nvim",
         "easypick-nvim": "easypick-nvim",
+        "evergarden": "evergarden",
         "fidget-nvim": "fidget-nvim",
         "flake-utils": "flake-utils",
         "gen-luarc": "gen-luarc",

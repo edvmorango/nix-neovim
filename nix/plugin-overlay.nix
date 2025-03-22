@@ -7,6 +7,7 @@
     };
 in {
   nvimPlugins = {
+    evergarden = mkNvimPlugin inputs.evergarden "evergarden";
     nvim-unception = mkNvimPlugin inputs.nvim-unception "nvim-unception";
     nvim-surround = mkNvimPlugin inputs.nvim-surround "nvim-surround";
     gitsigns-nvim = mkNvimPlugin inputs.gitsigns-nvim "gitsigns-nvim";
