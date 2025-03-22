@@ -1,5 +1,3 @@
-
-
 vim.filetype.add({
   filename = {
     [".purs"] = "purescript",

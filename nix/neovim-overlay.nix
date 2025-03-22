@@ -94,11 +94,10 @@ with final.pkgs.lib; let
     nvim-jqx
   ];
 
-  # Right now, I'm binding these on `home.nix`
   extraPackages = with pkgs; [
     # language servers, etc.
-    #lua-language-server
-    #nil # nix LSP
+    lua-language-server
+    nil # nix LSP
   ];
 in {
   # This is the neovim derivation
@@ -106,6 +105,16 @@ in {
   nvim-pkg = mkNeovim {
     plugins = all-plugins;
     inherit extraPackages;
+  };
+
+  # This is meant to be used within a devshell.
+  # Instead of loading the lua Neovim configuration from
+  # the Nix store, it is loaded from $XDG_CONFIG_HOME/nvim-dev
+  nvim-dev = mkNeovim {
+    plugins = all-plugins;
+    inherit extraPackages;
+    appName = "nvim-dev";
+    wrapRc = false;
   };
 
   # This can be symlinked in the devShell's shellHook
