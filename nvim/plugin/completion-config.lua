@@ -16,9 +16,16 @@ blink.setup {
         if cmp.is_visible() then
           return
         end
-        cmp.show_and_insert()
+        return cmp.show_and_insert()
       end,
       'select_and_accept',
+    },
+    ['<CR>'] = {
+      function(cmp)
+        if cmp.is_visible() then
+          cmp.select_and_accept()
+        end
+      end
     },
     ['<C-e>'] = { 'hide' },
     ['<C-y>'] = { 'select_and_accept' },
