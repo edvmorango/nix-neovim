@@ -8,6 +8,16 @@
 
     flake-utils.url = "github:numtide/flake-utils";
 
+    blink-cmp = {
+      url = "github:Saghen/blink.cmp";
+      flake = false;
+    };
+
+    vague-nvim = {
+      url = "github:vague2k/vague.nvim";
+      flake = false;
+    };
+
     nvim-jqx = {
       url = "github:gennaro-tedesco/nvim-jqx";
       flake = false;

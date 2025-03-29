@@ -7,6 +7,8 @@
     };
 in {
   nvimPlugins = {
+    vague-nvim = mkNvimPlugin inputs.vague-nvim "vague-nvim";
+    blink-cmp = mkNvimPlugin inputs.blink-cmp "blink-cmp";
     evergarden = mkNvimPlugin inputs.evergarden "evergarden";
     nvim-unception = mkNvimPlugin inputs.nvim-unception "nvim-unception";
     nvim-surround = mkNvimPlugin inputs.nvim-surround "nvim-surround";
