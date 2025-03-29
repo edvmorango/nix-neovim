@@ -14,10 +14,8 @@ blink.setup {
     ['<C-space>'] = {
       function(cmp)
         if cmp.is_visible() then
-          print('hre1')
           return
         end
-        print('here?')
         cmp.show_and_insert()
       end,
       'select_and_accept',
