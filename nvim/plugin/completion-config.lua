@@ -4,17 +4,48 @@
 local blink = require('blink.cmp')
 
 blink.setup {
+  enabled = function()
+    return true
+  end,
   keymap = {
-    preset = 'default',
+    preset = 'none',
 
-    ['<C-space]'] = {
+    ['<C-space>'] = {
       function(cmp)
-        if cmp.is_active() then
+        if cmp.is_visible() then
+          print('hre1')
           return
         end
+        print('here?')
         cmp.show_and_insert()
       end,
       'select_and_accept',
+    },
+    ['<C-e>'] = { 'hide' },
+    ['<C-y>'] = { 'select_and_accept' },
+
+    ['<Up>'] = { 'select_prev', 'fallback' },
+    ['<Down>'] = { 'select_next', 'fallback' },
+    ['<C-p>'] = { 'select_prev', 'fallback_to_mappings' },
+    ['<C-n>'] = { 'select_next', 'fallback_to_mappings' },
+
+    ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
+    ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
+
+    ['<Tab>'] = { 'snippet_forward', 'fallback' },
+    ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
+
+    ['<C-k>'] = { 'show_signature', 'hide_signature', 'fallback' },
+  },
+  sources = {
+
+    default = {},
+
+    per_filetype = {
+      lua = { 'lsp', 'path', 'snippets' },
+      scala = { 'lsp', 'path', 'snippets' },
+      sbt = { 'lsp', 'path', 'snippets' },
+      nix = { 'lsp', 'path', 'snippets' },
     },
   },
 
@@ -22,6 +53,7 @@ blink.setup {
     keyword = {
       range = 'prefix',
     },
+
     trigger = {
       prefetch_on_insert = true,
       show_on_keyword = true,
@@ -64,9 +96,9 @@ blink.setup {
       end,
       window = {
         min_width = 10,
-        max_width = 80,
-        max_height = 20,
-        border = nil, -- Defaults to `vim.o.winborder` on nvim 0.11+ or 'padded' when not defined/<=0.10
+        max_width = 120,
+        max_height = 50,
+        border = 'rounded', -- Defaults to `vim.o.winborder` on nvim 0.11+ or 'padded' when not defined/<=0.10
         winblend = 0,
         winhighlight = 'Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,EndOfBuffer:BlinkCmpDoc',
         -- Note that the gutter will be disabled when border ~= 'none'
