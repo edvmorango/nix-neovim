@@ -7,6 +7,7 @@ blink.setup {
   enabled = function()
     return true
   end,
+  fuzzy = { implementation = 'lua', prebuilt_binaries = { download = false } },
   keymap = {
     preset = 'none',
 
