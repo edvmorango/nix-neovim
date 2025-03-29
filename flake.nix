@@ -184,10 +184,6 @@
       url = "github:mbbill/undotree";
       flake = false;
     };
-    rustaceanvim = {
-      url = "github:mrcjkb/rustaceanvim";
-      flake = false;
-    };
     nvim-scissors = {
       url = "github:chrisgrieser/nvim-scissors";
       flake = false;

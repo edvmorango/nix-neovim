@@ -147,11 +147,11 @@
     "evergarden": {
       "flake": false,
       "locked": {
-        "lastModified": 1743083935,
-        "narHash": "sha256-FxRUTWVppBt5jtOa3eyBx+4cznminvXUS7tBV5ItsXI=",
+        "lastModified": 1743102525,
+        "narHash": "sha256-nupDWpBE7TaDTUG11egCPq1SyLhSbjho9vEdwTYcywM=",
         "owner": "comfysage",
         "repo": "evergarden",
-        "rev": "488a385fc8cb62cfdbfec15de66043f01ca2f83a",
+        "rev": "cba67b1e543149eba507a0090ed72acbfe51b792",
         "type": "github"
       },
       "original": {
@@ -1019,11 +1019,11 @@
     "nvim-treesitter": {
       "flake": false,
       "locked": {
-        "lastModified": 1743149352,
-        "narHash": "sha256-+sPOpzCq6p/MjKm+I8qZRjoKNeGbtn7i1KWr//sBflI=",
+        "lastModified": 1743241942,
+        "narHash": "sha256-3O7cVnPMAZU0/Mvq4ZfRvE3xzFZOzD4e67/JzaSUAE4=",
         "owner": "nvim-treesitter",
         "repo": "nvim-treesitter",
-        "rev": "a3315b8c7f0f1ddaa30b24bcc0af0d31024dfb6a",
+        "rev": "aece1062335a9e856636f5da12d8a06c7615ce8a",
         "type": "github"
       },
       "original": {
@@ -1163,7 +1163,6 @@
         "nvim_context_vt": "nvim_context_vt",
         "onenord-nvim": "onenord-nvim",
         "plenary-nvim": "plenary-nvim",
-        "rustaceanvim": "rustaceanvim",
         "scrollbar-nvim": "scrollbar-nvim",
         "search-nvim": "search-nvim",
         "substitute-nvim": "substitute-nvim",
@@ -1186,22 +1185,6 @@
         "vim-rooter": "vim-rooter",
         "vim-scala": "vim-scala",
         "yankbank-nvim": "yankbank-nvim"
-      }
-    },
-    "rustaceanvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1742924347,
-        "narHash": "sha256-OGW+PVf3bJAH/c0DWxNHrfjVdxghatazRkfFui6KhL4=",
-        "owner": "mrcjkb",
-        "repo": "rustaceanvim",
-        "rev": "1486b5a2cc0de646d6d0837ec77127c9d6e2c50f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "mrcjkb",
-        "repo": "rustaceanvim",
-        "type": "github"
       }
     },
     "scrollbar-nvim": {

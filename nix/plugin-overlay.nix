@@ -55,7 +55,6 @@ in {
     onenord-nvim = mkNvimPlugin inputs.onenord-nvim "onenord-nvim";
     nvim-navic = mkNvimPlugin inputs.nvim-navic "nvim-navic";
     undotree = mkNvimPlugin inputs.undotree "undotree";
-    rustaceanvim = mkNvimPlugin inputs.rustaceanvim "rustaceanvim";
     nvim-scissors = mkNvimPlugin inputs.nvim-scissors "nvim-scissors";
     lspkind-nvim = mkNvimPlugin inputs.lspkind-nvim "lspkind-nvim";
     yankbank-nvim = mkNvimPlugin inputs.yankbank-nvim "yankbank-nvim";

@@ -73,7 +73,6 @@ with final.pkgs.lib; let
     onenord-nvim
     nvim-navic
     undotree
-    rustaceanvim
     nvim-scissors
     lspkind-nvim
     yankbank-nvim
