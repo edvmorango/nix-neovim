@@ -59,8 +59,6 @@ gitsigns.setup()
 
 vim.o.updatetime = 100
 
-
-
 -- surround
 
 local surround = require('nvim-surround')

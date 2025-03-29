@@ -52,7 +52,6 @@ with final.pkgs.lib; let
     nvim-treesitter
     noice-nvim
     nvim-metals
-    nvim-lspconfig
     cmp-nvim-lsp
     lsp-status-nvim
     nvim-tree-lua

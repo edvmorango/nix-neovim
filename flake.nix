@@ -96,10 +96,6 @@
       url = "github:scalameta/nvim-metals";
       flake = false;
     };
-    nvim-lspconfig = {
-      url = "github:neovim/nvim-lspconfig";
-      flake = false;
-    };
     cmp-nvim-lsp = {
       url = "github:hrsh7th/cmp-nvim-lsp";
       flake = false;

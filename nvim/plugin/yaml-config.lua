@@ -9,7 +9,7 @@ local on_attach = function(client, _)
   require('lsp-status').on_attach(client)
 end
 
-require('lspconfig').yamlls.setup {
+local settings = {
   autostart = true,
   cmd = { "yaml-language-server", "--stdio" },
   capabilities = capabilities,

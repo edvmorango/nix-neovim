@@ -872,22 +872,6 @@
         "type": "github"
       }
     },
-    "nvim-lspconfig": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1743080180,
-        "narHash": "sha256-PS7DWFXYNOEQiWjtB+bfNBBfsaI3UXQRU/1G6qIlc+4=",
-        "owner": "neovim",
-        "repo": "nvim-lspconfig",
-        "rev": "85e0dd26b710e834a105d679200d01e326a3d2b0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "neovim",
-        "repo": "nvim-lspconfig",
-        "type": "github"
-      }
-    },
     "nvim-metals": {
       "flake": false,
       "locked": {
@@ -1164,7 +1148,6 @@
         "nvim-context-vt": "nvim-context-vt",
         "nvim-jqx": "nvim-jqx",
         "nvim-lsp-notify": "nvim-lsp-notify",
-        "nvim-lspconfig": "nvim-lspconfig",
         "nvim-metals": "nvim-metals",
         "nvim-navic": "nvim-navic",
         "nvim-nio": "nvim-nio",

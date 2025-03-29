@@ -12,9 +12,8 @@ local on_attach = function(client, _)
   require('lsp-status').on_attach(client)
 end
 
-local lspconfig = require('lspconfig')
 
-lspconfig.nil_ls.setup {
+local settings = {
   autostart = true,
   cmd = { "nil" },
   capabilities = capabilities,

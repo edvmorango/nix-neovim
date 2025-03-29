@@ -4,7 +4,7 @@ local g = vim.g
 local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-lspconfig.hls.setup {
+vim.lsp.config['hls'].setup {
   filetypes = { "haskell", "lhaskell", "cabal" },
   cmd = { "haskell-language-server-wrapper", "--lsp" },
   settings = {

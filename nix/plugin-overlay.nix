@@ -34,7 +34,6 @@ in {
     nvim-treesitter = mkNvimPlugin inputs.nvim-treesitter "nvim-treesitter";
     noice-nvim = mkNvimPlugin inputs.noice-nvim "noice-nvim";
     nvim-metals = mkNvimPlugin inputs.nvim-metals "nvim-metals";
-    nvim-lspconfig = mkNvimPlugin inputs.nvim-lspconfig "nvim-lspconfig";
     cmp-nvim-lsp = mkNvimPlugin inputs.cmp-nvim-lsp "cmp-nvim-lsp";
     lsp-status-nvim = mkNvimPlugin inputs.lsp-status-nvim "lsp-status-nvim";
     nvim-tree-lua = mkNvimPlugin inputs.nvim-tree-lua "nvim-tree-lua";
