@@ -9,39 +9,7 @@ blink.setup {
   end,
   fuzzy = { implementation = 'lua', prebuilt_binaries = { download = false } },
   keymap = {
-    preset = 'none',
-
-    ['<C-space>'] = {
-      function(cmp)
-        if cmp.is_visible() then
-          return
-        end
-        return cmp.show_and_insert()
-      end,
-      'select_and_accept',
-    },
-    ['<CR>'] = {
-      function(cmp)
-        if cmp.is_visible() then
-          cmp.select_and_accept()
-        end
-      end
-    },
-    ['<C-e>'] = { 'hide' },
-    ['<C-y>'] = { 'select_and_accept' },
-
-    ['<Up>'] = { 'select_prev', 'fallback' },
-    ['<Down>'] = { 'select_next', 'fallback' },
-    ['<C-p>'] = { 'select_prev', 'fallback_to_mappings' },
-    ['<C-n>'] = { 'select_next', 'fallback_to_mappings' },
-
-    ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
-    ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
-
-    ['<Tab>'] = { 'snippet_forward', 'fallback' },
-    ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
-
-    ['<C-k>'] = { 'show_signature', 'hide_signature', 'fallback' },
+    preset = 'enter',
   },
   sources = {
 
@@ -152,3 +120,6 @@ blink.setup {
     },
   },
 }
+
+
+vim.lsp.enable({ "luals", "metals", "nil_ls", "yamlls" })
