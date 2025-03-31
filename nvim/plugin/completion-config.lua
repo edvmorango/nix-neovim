@@ -120,6 +120,3 @@ blink.setup {
     },
   },
 }
-
-
-vim.lsp.enable({ "luals", "metals", "nil_ls", "yamlls" })
