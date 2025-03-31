@@ -15,6 +15,8 @@ blink.setup {
 
     default = {},
 
+    providers = { lsp = { async = false, timeout_ms = 500 } },
+
     per_filetype = {
       lua = { 'lsp', 'path', 'snippets' },
       scala = { 'lsp', 'path', 'snippets' },
