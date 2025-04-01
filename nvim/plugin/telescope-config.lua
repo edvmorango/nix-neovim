@@ -132,10 +132,18 @@ search.setup {
   append_tabs = { -- append_tabs will add the provided tabs to the default ones
     {
       name = 'Changed Files',
-      tele_func = builtin.git_files
+      tele_func = function()
+        builtin.find_files({
+          find_command = { 'git', 'ls-files', '--modified', '--others', '--exclude-standard' },
+        })
+      end
       ,
       available = function()
-        return vim.fn.isdirectory('.git') == 1
+        local current_dir = vim.fn.getcwd()
+
+        local result = vim.fn.system('git -C ' .. current_dir .. ' rev-parse --is-inside-work-tree')
+
+        return result:match('true') ~= nil
       end
     },
   },
@@ -144,7 +152,14 @@ search.setup {
       builtin.find_files
     },
     { 'Grep',
-      builtin.live_grep
+      tele_func = function(opts)
+        if (opts ~= nil) then
+          builtin.live_grep({ cwd = opts.path, additional_args = { "--hidden", "--glob", "!.git/*" } })
+        else
+          builtin.live_grep({ additional_args = { "--hidden", "--glob", "!.git/*" } })
+        end
+      end,
+      tele_opts = { path = '' }
     }
   }
 
@@ -160,7 +175,13 @@ end
 
 vim.keymap.set('n', '<space>c', telescope_server_ui, { silent = true })
 
-vim.keymap.set('n', '<leader>g', function() search.open({ tab_id = 3 }) end, { silent = true })
+vim.keymap.set('n', '<leader>g', function()
+  local current_dir = vim.fn.getcwd()
+
+  vim.cmd('lcd ' .. current_dir)
+
+  search.open({ tab_id = 3, tele_opts = { path = current_dir } })
+end, { silent = true })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { silent = true })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { silent = true })
 vim.keymap.set('n', '<leader>qq', builtin.quickfix, { silent = true })
@@ -184,7 +205,11 @@ vim.keymap.set('n', 'gw', vim.lsp.buf.workspace_symbol, { silent = true })
 
 vim.keymap.set('n', '<C-g>',
   function()
-    vim.cmd('Rooter')
-    require('search').open()
-    -- exec(':lua require('search').open()')
+    local git_root = vim.fn.systemlist('git rev-parse --show-toplevel')[1]
+
+    if git_root and git_root ~= '' then
+      vim.cmd('lcd ' .. git_root) -- Change to Git root
+    end
+
+    require('search').open({ tab_id = 3, tele_opts = { path = git_root } })
   end, { silent = true })
