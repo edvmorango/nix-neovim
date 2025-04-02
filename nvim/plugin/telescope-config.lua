@@ -142,8 +142,6 @@ search.setup {
     {
       'Grep',
       tele_func = function(opts)
-        vim.notify(vim.inspect(opts))
-
         if opts.path ~= '' then
           builtin.live_grep { cwd = opts.path, additional_args = { '--hidden', '--glob', '!.git/*' } }
         else
