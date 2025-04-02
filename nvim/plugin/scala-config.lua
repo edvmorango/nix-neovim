@@ -6,7 +6,7 @@ metals_config.settings = {
   showInferredType = true,
   superMethodLensesEnabled = true,
   enableSemanticHighlighting = true,
-  serverProperties = { "-Dmetals.enable-best-effort=true" }
+  serverProperties = { "-Dmetals.enable-best-effort=true", "-Xms4G", "-Xmx8G" }
 }
 
 metals_config.init_options.statusBarProvider = "off"
