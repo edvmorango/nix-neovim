@@ -118,12 +118,17 @@ telescope.setup {
   },
 }
 
+FindGitRoot = function()
+  return vim.fn.systemlist('git rev-parse --show-toplevel')[1]
+end
+
 local search = require('search')
 
 search.setup {
   append_tabs = { -- append_tabs will add the provided tabs to the default ones
     {
       name = 'Changed Files',
+
       tele_func = function()
         builtin.find_files {
           find_command = { 'git', 'ls-files', '--modified', '--others', '--exclude-standard' },
@@ -140,17 +145,27 @@ search.setup {
   },
   tabs = {
     {
-      'Grep',
+      'Files',
+      tele_opts = { is_relative = true },
       tele_func = function(opts)
-        if opts.path ~= '' then
-          builtin.live_grep { cwd = opts.path, additional_args = { '--hidden', '--glob', '!.git/*' } }
+        if opts.is_relative then
+          builtin.find_files()
         else
-          builtin.live_grep { additional_args = { '--hidden', '--glob', '!.git/*' } }
+          builtin.find_files { cwd = FindGitRoot() }
         end
       end,
-      tele_opts = { path = '' },
     },
-    { 'Files', builtin.find_files },
+    {
+      'Grep',
+      tele_opts = { is_relative = true },
+      tele_func = function(opts)
+        if opts.is_relative then
+          builtin.live_grep { additional_args = { '--hidden', '--glob', '!.git/*' } }
+        else
+          builtin.live_grep { cwd = FindGitRoot(), additional_args = { '--hidden', '--glob', '!.git/*' } }
+        end
+      end,
+    },
   },
 }
 
@@ -164,9 +179,6 @@ end
 
 vim.keymap.set('n', '<space>c', telescope_server_ui, { silent = true })
 
-vim.keymap.set('n', '<leader>g', function()
-  search.open { tab_id = 3 }
-end, { silent = true })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { silent = true })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { silent = true })
 vim.keymap.set('n', '<leader>qq', builtin.quickfix, { silent = true })
@@ -186,8 +198,10 @@ vim.keymap.set('n', 'K', vim.lsp.buf.hover, { silent = true })
 vim.keymap.set('n', 'gs', vim.lsp.buf.document_symbol, { silent = true })
 vim.keymap.set('n', 'gw', vim.lsp.buf.workspace_symbol, { silent = true })
 
-vim.keymap.set('n', '<C-g>', function()
-  local git_root = vim.fn.systemlist('git rev-parse --show-toplevel')[1]
+vim.keymap.set('n', '<leader>g', function()
+  search.open { tab_id = 3 }
+end, { silent = true })
 
-  require('search').open { tab_id = 1, tele_opts = { path = git_root } }
+vim.keymap.set('n', '<C-g>', function()
+  require('search').open { tab_id = 1, tele_opts = { is_relative = false } }
 end, { silent = true })
