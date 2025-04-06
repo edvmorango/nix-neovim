@@ -19,8 +19,8 @@ blink.setup {
 
     per_filetype = {
       lua = { 'lsp', 'path', 'snippets' },
-      scala = { 'lsp', 'path', 'snippets' },
-      sbt = { 'lsp', 'path', 'snippets' },
+      scala = { 'lsp', 'path', 'buffer', 'snippets' },
+      sbt = { 'lsp', 'path', 'buffer', 'snippets' },
       nix = { 'lsp', 'path', 'snippets' },
     },
   },
