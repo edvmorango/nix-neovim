@@ -13,6 +13,11 @@
       flake = true;
     };
 
+    charleston-nvim = {
+      url = "github:RomanAverin/charleston.nvim";
+      flake = false;
+    };
+
     vague-nvim = {
       url = "github:vague2k/vague.nvim";
       flake = false;

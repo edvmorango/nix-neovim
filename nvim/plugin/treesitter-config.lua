@@ -1,11 +1,10 @@
-local parsers_path = "/home/$USER/.treesitter/parsers"
+local parsers_path = '/home/$USER/.treesitter/parsers'
 
 vim.opt.runtimepath:append(parsers_path)
 
-
-require 'nvim-treesitter.configs'.setup {
+require('nvim-treesitter.configs').setup {
   -- A list of parser names, or "all"
-  ensure_installed = { "rust", "scala", "lua", "purescript", "json", "regex", "vim", "bash", "nix", "yaml", "hcl" },
+  ensure_installed = { 'rust', 'scala', 'lua', 'purescript', 'json', 'regex', 'vim', 'bash', 'nix', 'yaml', 'hcl' },
 
   -- aprsers
   parser_install_dir = parsers_path,
@@ -17,7 +16,7 @@ require 'nvim-treesitter.configs'.setup {
   auto_install = false,
 
   -- List of parsers to ignore installing (for "all")
-  ignore_install = { "javascript", "cc", "markdown" },
+  ignore_install = { 'javascript', 'cc', 'markdown' },
 
   highlight = {
     -- `false` will disable the whole extension
@@ -31,7 +30,7 @@ require 'nvim-treesitter.configs'.setup {
 
     -- Lua parse is coming from nix neovim-9.1 and isn't updated, which causes the annoying error related to syntax, for
     -- now disable is the best alternative
-    disable = { "lua", "c" },
+    disable = { 'lua', 'c' },
 
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
@@ -40,18 +39,14 @@ require 'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
   incremental_selection = {
-    enable = false
+    enable = false,
   },
   indent = {
-    enable = false
-  }
-
+    enable = false,
+  },
 }
 
 require('hlargs').setup()
-
-
-
 
 --vim.api.nvim_create_autocmd({ 'BufEnter', 'BufAdd', 'BufNew', 'BufNewFile', 'BufWinEnter' }, {
 --  group = vim.api.nvim_create_augroup('TS_FOLD_WORKAROUND', {}),

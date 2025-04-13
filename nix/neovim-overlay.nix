@@ -26,6 +26,7 @@ with final.pkgs.lib; let
   #   ...
   # }
   all-plugins = with pkgs.nvimPlugins; [
+    charleston-nvim
     blink-cmp
     vague-nvim
     evergarden
