@@ -3,28 +3,28 @@ local cmd = vim.cmd
 -- highlight link EchoDocPopup Pmenu
 
 local highlight = {
-  "RainbowRed",
-  "RainbowYellow",
-  "RainbowBlue",
-  "RainbowOrange",
-  "RainbowGreen",
-  "RainbowViolet",
-  "RainbowCyan",
-  "CursorColumn",
-  "Whitespace"
+  'RainbowRed',
+  'RainbowYellow',
+  'RainbowBlue',
+  'RainbowOrange',
+  'RainbowGreen',
+  'RainbowViolet',
+  'RainbowCyan',
+  'CursorColumn',
+  'Whitespace',
 }
 
 local hooks = require('ibl.hooks')
 -- create the highlight groups in the highlight setup hook, so they are reset
 -- every time the colorscheme changes
 hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-  vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })
-  vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#E5C07B" })
-  vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#61AFEF" })
-  vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#D19A66" })
-  vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
-  vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
-  vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
+  vim.api.nvim_set_hl(0, 'RainbowRed', { fg = '#E06C75' })
+  vim.api.nvim_set_hl(0, 'RainbowYellow', { fg = '#E5C07B' })
+  vim.api.nvim_set_hl(0, 'RainbowBlue', { fg = '#61AFEF' })
+  vim.api.nvim_set_hl(0, 'RainbowOrange', { fg = '#D19A66' })
+  vim.api.nvim_set_hl(0, 'RainbowGreen', { fg = '#98C379' })
+  vim.api.nvim_set_hl(0, 'RainbowViolet', { fg = '#C678DD' })
+  vim.api.nvim_set_hl(0, 'RainbowCyan', { fg = '#56B6C2' })
 end)
 
 -- identline (make a function to enable/disable)
@@ -32,7 +32,7 @@ local ibl = require('ibl')
 ibl.setup {
   indent = {
     highlight = highlight,
-    char = '╎'
+    char = '╎',
   },
   whitespace = {
     highlight = highlight,
@@ -44,10 +44,11 @@ ibl.setup {
   --show_current_context_start = true,
   --show_end_of_line = true,
   --space_char_blankline = " ",
-
 }
 
-local ibl_toggle = function() vim.cmd('IBLToggle') end
+local ibl_toggle = function()
+  vim.cmd('IBLToggle')
+end
 
 vim.keymap.set('n', 't', ibl_toggle)
 --Map('n', 't', '<cmd>IBLToggle<CR>')
@@ -64,27 +65,30 @@ local surround = require('nvim-surround')
 
 surround.setup()
 
-
-
-
 -- motion
 --
-local spider = require("spider")
+local spider = require('spider')
 
 spider.setup {
-  skipInsignificantPunctuation = true
+  skipInsignificantPunctuation = true,
 }
 
-vim.keymap.set({ "n", "o", "x" }, "w", function() spider.motion('w') end, { desc = "Spider-w" })
-vim.keymap.set({ "n", "o", "x" }, "e", function() spider.motion('e') end, { desc = "Spider-e" })
-vim.keymap.set({ "n", "o", "x" }, "b", function() spider.motion('b') end, { desc = "Spider-b" })
-vim.keymap.set({ "n", "o", "x" }, "ge", function() spider.motion('ge') end, { desc = "Spider-ge" })
-
+vim.keymap.set({ 'n', 'o', 'x' }, 'w', function()
+  spider.motion('w')
+end, { desc = 'Spider-w' })
+vim.keymap.set({ 'n', 'o', 'x' }, 'e', function()
+  spider.motion('e')
+end, { desc = 'Spider-e' })
+vim.keymap.set({ 'n', 'o', 'x' }, 'b', function()
+  spider.motion('b')
+end, { desc = 'Spider-b' })
+vim.keymap.set({ 'n', 'o', 'x' }, 'ge', function()
+  spider.motion('ge')
+end, { desc = 'Spider-ge' })
 
 --mouse
 
 local nop = function() end
-
 
 vim.keymap.set('i', '<ScrollWheelUp>', nop)
 vim.keymap.set('i', '<S-ScrollWheelUp>', nop)
@@ -103,8 +107,6 @@ vim.keymap.set('i', '<C-ScrollWheelRight>', nop)
 vim.keymap.set('n', 'Q', '<nop>')
 vim.keymap.set('n', 'gQ', '<nop>')
 
-
-
 -- window
 vim.keymap.set('n', '<M-h>', '<C-w>h')
 vim.keymap.set('n', '<M-j>', '<C-w>j')
@@ -118,38 +120,35 @@ vim.keymap.set('n', '<M-K>', '<C-w>K')
 vim.keymap.set('n', '<M-L>', '<C-w>L')
 vim.keymap.set('n', '<M-x>', '<C-w>x')
 
-
 vim.keymap.set('n', '<C-k>', '<cmd>FloatermToggle<CR>')
 vim.keymap.set('t', '<C-k>', '<C-\\><C-n><cmd>FloatermToggle<CR>')
-
 
 -- apparently normal! have dependencies, so isn't a good idea call the function directly from lua
 -- so I'm quoting
 function CenterCursorOnNext(forward)
-  if forward
-  then
-    cmd 'silent! normal! n'
-    cmd 'silent! normal! zz'
+  if forward then
+    cmd('silent! normal! n')
+    cmd('silent! normal! zz')
   else
-    cmd 'silent! normal! N'
-    cmd 'silent! normal! zz'
+    cmd('silent! normal! N')
+    cmd('silent! normal! zz')
   end
 end
 
 vim.keymap.set('n', 'n', '<cmd>lua CenterCursorOnNext(true)<CR>', { silent = true })
 vim.keymap.set('n', 'N', '<cmd>lua CenterCursorOnNext(false)<CR>', { silent = true })
 
-
 -- lsp
 local inc_rename = require('inc_rename')
-inc_rename.setup({})
 
-vim.keymap.set("n", "<leader>r", function() vim.cmd('IncRename') end) -- the space is relevant
+inc_rename.setup {}
 
-
+vim.keymap.set('n', '<leader>r', function()
+  return ':IncRename ' .. vim.fn.expand('<cword>')
+end, { expr = true }) -- the space is relevant
 
 -- tidy (remove trailing spaces)
-local tidy = require("tidy")
+local tidy = require('tidy')
 
 tidy.setup {
   filetype_exclude = {},
@@ -162,38 +161,40 @@ substitute.setup()
 
 local range = require('substitute.range')
 
-vim.keymap.set("n", "<leader>s", range.operator, { noremap = true })
-vim.keymap.set("x", "<leader>s", range.visual, { noremap = true })
-vim.keymap.set("n", "<leader>ss", range.word, { noremap = true })
+vim.keymap.set('n', '<leader>s', range.operator, { noremap = true })
+vim.keymap.set('x', '<leader>s', range.visual, { noremap = true })
+vim.keymap.set('n', '<leader>ss', range.word, { noremap = true })
 
 -- undo
 local yankbank = require('yankbank')
 
-yankbank.setup({
+yankbank.setup {
   max_entries = 12,
-  sep = "",
-})
+  sep = '',
+}
 
-vim.keymap.set('n', 'z', function() vim.cmd('YankBank') end, { silent = true })
+vim.keymap.set('n', 'z', function()
+  vim.cmd('YankBank')
+end, { silent = true })
 
 -- fidget
-local fidget = require("fidget")
+local fidget = require('fidget')
 
 fidget.setup {
 
   integration = {
-    ["nvim-tree"] = {
+    ['nvim-tree'] = {
       enable = false,
-    }
-
-  }
-
+    },
+  },
 }
 
 -- ctx
 local nvim_context_vt = require('nvim_context_vt')
 nvim_context_vt.setup()
-vim.keymap.set('n', '<C-t>', function() vim.cmd('NvimContextVtToggle') end, { silent = true })
+vim.keymap.set('n', '<C-t>', function()
+  vim.cmd('NvimContextVtToggle')
+end, { silent = true })
 
 --rooter
 local rooter = require('nvim-rooter')
@@ -205,30 +206,27 @@ rooter.setup {
   fallback_to_parent = false,
 }
 
-local conform = require("conform")
+local conform = require('conform')
 
-conform.setup({
+conform.setup {
   format_on_save = {
     -- These options will be passed to conform.format()
     timeout_ms = 500,
     lsp_fallback = true,
   },
   formatters_by_ft = {
-    scala = { "scalafmt" },
-    rust = { "rustfmt" },
-    json = { "jq" },
-    nix = { "alejandra" },
-    lua = { "stylua" },
+    scala = { 'scalafmt' },
+    rust = { 'rustfmt' },
+    json = { 'jq' },
+    nix = { 'alejandra' },
+    lua = { 'stylua' },
     haskell = {
 
-      command = "fourmolu",
-      append_args = { "--mode inplace (git ls-files '*.hs')" }
-
-
-    }
+      command = 'fourmolu',
+      append_args = { "--mode inplace (git ls-files '*.hs')" },
+    },
   },
-})
-
+}
 
 -- status
 local lspstatus = require('lsp-status')
@@ -238,28 +236,21 @@ lspstatus.config { status_symbol = 'LSP' }
 -- lspstatus.register_progress()
 
 -- scrollbar
-local scrollbarInit = vim.api.nvim_create_augroup("ScrollbarInit", {})
+local scrollbarInit = vim.api.nvim_create_augroup('ScrollbarInit', {})
 
-require("autoclose").setup {}
+require('autoclose').setup {}
 
+vim.api.nvim_create_autocmd({ 'WinScrolled', 'VimResized', 'QuitPre' }, {
+  group = scrollbarInit,
+  command = "silent! lua require('scrollbar').show()",
+})
 
-vim.api.nvim_create_autocmd({ 'WinScrolled', 'VimResized', 'QuitPre' },
-  {
-    group = scrollbarInit,
-    command = "silent! lua require('scrollbar').show()"
-  }
-)
+vim.api.nvim_create_autocmd({ 'WinEnter', 'FocusGained' }, {
+  group = scrollbarInit,
+  command = "silent! lua require('scrollbar').show()",
+})
 
-vim.api.nvim_create_autocmd({ 'WinEnter', 'FocusGained' },
-  {
-    group = scrollbarInit,
-    command = "silent! lua require('scrollbar').show()"
-  }
-)
-
-vim.api.nvim_create_autocmd({ 'WinLeave', 'BufLeave', 'BufWinLeave', 'FocusLost' },
-  {
-    group = scrollbarInit,
-    command = "silent! lua require('scrollbar').clear()"
-  }
-)
+vim.api.nvim_create_autocmd({ 'WinLeave', 'BufLeave', 'BufWinLeave', 'FocusLost' }, {
+  group = scrollbarInit,
+  command = "silent! lua require('scrollbar').clear()",
+})
