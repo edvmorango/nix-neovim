@@ -7,6 +7,7 @@
     };
 in {
   nvimPlugins = {
+    hover-nvim = mkNvimPlugin inputs.hover-nvim "hover-nvim";
     charleston-nvim = mkNvimPlugin inputs.charleston-nvim "charleston-nvim";
     vague-nvim = mkNvimPlugin inputs.vague-nvim "vague-nvim";
     blink-cmp = mkNvimPlugin inputs.blink-cmp "blink-cmp";

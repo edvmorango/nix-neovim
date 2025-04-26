@@ -8,6 +8,11 @@
 
     flake-utils.url = "github:numtide/flake-utils";
 
+    hover-nvim = {
+      url = "github:lewis6991/hover.nvim";
+      flake = false;
+    };
+
     blink-cmp = {
       url = "github:Saghen/blink.cmp";
       flake = true;
