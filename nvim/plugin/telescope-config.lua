@@ -131,11 +131,18 @@ search.setup {
 
       tele_func = function()
         builtin.find_files {
-          find_command = { 'git', 'ls-files', '--modified', '--others', '--exclude-standard' },
+          find_command = {
+            'git',
+            'ls-files',
+            '--modified',
+            '--others',
+            '--exclude-standard',
+          },
+          cwd = FindGitRoot(),
         }
       end,
       available = function()
-        local current_dir = vim.fn.getcwd()
+        local current_dir = FindGitRoot()
 
         local result = vim.fn.system('git -C ' .. current_dir .. ' rev-parse --is-inside-work-tree')
 
@@ -157,7 +164,7 @@ search.setup {
     },
     {
       'Grep',
-      tele_opts = { is_relative = true },
+      tele_opts = { is_relative = false },
       tele_func = function(opts)
         if opts.is_relative then
           builtin.live_grep { additional_args = { '--hidden', '--glob', '!.git/*' } }
@@ -171,7 +178,6 @@ search.setup {
 
 local function telescope_server_ui()
   local current_file = vim.bo.filetype
-
   if current_file == 'scala' or current_file == 'sbt' then
     require('telescope').extensions.metals.commands(TelescopeLayoutConfigVertical)
   end
@@ -200,6 +206,10 @@ vim.keymap.set('n', 'gw', vim.lsp.buf.workspace_symbol, { silent = true })
 
 vim.keymap.set('n', '<leader>g', function()
   search.open { tab_id = 3, tele_opts = { is_relative = false } }
+end, { silent = true })
+
+vim.keymap.set('n', '<leader>t', function()
+  search.open { tab_id = 2, tele_opts = { is_relative = true } }
 end, { silent = true })
 
 vim.keymap.set('n', '<C-g>', function()
