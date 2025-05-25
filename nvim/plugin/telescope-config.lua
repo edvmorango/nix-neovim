@@ -199,7 +199,7 @@ vim.keymap.set('n', 'gs', vim.lsp.buf.document_symbol, { silent = true })
 vim.keymap.set('n', 'gw', vim.lsp.buf.workspace_symbol, { silent = true })
 
 vim.keymap.set('n', '<leader>g', function()
-  search.open { tab_id = 3 }
+  search.open { tab_id = 3, tele_opts = { is_relative = false } }
 end, { silent = true })
 
 vim.keymap.set('n', '<C-g>', function()
