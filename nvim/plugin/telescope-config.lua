@@ -149,6 +149,10 @@ search.setup {
         return result:match('true') ~= nil
       end,
     },
+    {
+      name = 'Jump List',
+      tele_func = builtin.jumplist,
+    },
   },
   tabs = {
     {
@@ -214,4 +218,8 @@ end, { silent = true })
 
 vim.keymap.set('n', '<C-g>', function()
   require('search').open { tab_id = 1, tele_opts = { is_relative = false } }
+end, { silent = true })
+
+vim.keymap.set('n', '<C-k>', function()
+  require('search').open { tab_id = 4 }
 end, { silent = true })

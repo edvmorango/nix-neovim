@@ -10,12 +10,12 @@ vim.api.nvim_create_autocmd('QuitPre', {
     end
     if #invalid_win == #wins - 1 then
       -- Should quit, so we close all invalid windows.
-      for _, w in ipairs(invalid_win) do vim.api.nvim_win_close(w, true) end
+      for _, w in ipairs(invalid_win) do
+        vim.api.nvim_win_close(w, true)
+      end
     end
-  end
+  end,
 })
-
-
 
 local nvim_tree = require('nvim-tree')
 
@@ -34,6 +34,8 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
   root_dirs = {},
   prefer_startup_root = false,
   sync_root_with_cwd = false,
+  respect_buf_cwd = false,
+
   reload_on_bufenter = false,
   respect_buf_cwd = true,
   on_attach = 'default',
@@ -43,7 +45,7 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
     cursorline = true,
     debounce_delay = 15,
     width = 30,
-    side = 'left',
+    side = 'right',
     preserve_window_proportions = true,
     number = false,
     relativenumber = false,
@@ -129,7 +131,7 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
   },
   update_focused_file = {
     enable = false,
-    update_root = false,
+    update_root = true,
     ignore_list = {},
   },
   system_open = {
@@ -137,8 +139,8 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
     args = {},
   },
   diagnostics = {
-    enable = false,
-    show_on_dirs = false,
+    enable = true,
+    show_on_dirs = true,
     show_on_open_dirs = true,
     debounce_delay = 50,
     severity = {
@@ -180,7 +182,7 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
   actions = {
     use_system_clipboard = true,
     change_dir = {
-      enable = true,
+      enable = false,
       global = false,
       restrict_above_cwd = false,
     },
@@ -231,7 +233,7 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
   },
   notify = {
     threshold = vim.log.levels.INFO,
-    absolute_path = true,
+    absolute_path = false,
   },
   ui = {
     confirm = {
@@ -256,11 +258,26 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
   },
 }
 
+local function toggle_root()
+  local ok, git_root = pcall(function()
+    return vim.fn.systemlist('git rev-parse --show-toplevel')[1]
+  end)
 
-function NvimTreeToggleRoot()
-  vim.cmd('Rooter')
-  api.tree.toggle()
+  if not ok or git_root == nil or git_root == '' then
+    vim.notify('Not a Git repository', vim.log.levels.WARN)
+    return
+  end
+
+  -- Trim whitespace just in case
+  git_root = vim.fn.trim(git_root)
+
+  if api.tree.is_visible() then
+    api.tree.close()
+  else
+    api.tree.open { path = git_root }
+    api.tree.change_root(git_root)
+  end
 end
 
-vim.keymap.set('n', '<C-F>', NvimTreeToggleRoot, { silent = true })
+vim.keymap.set('n', '<C-F>', toggle_root, { silent = false })
 vim.keymap.set('n', '<leader>ff', api.tree.toggle, { silent = true })

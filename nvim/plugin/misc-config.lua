@@ -120,9 +120,6 @@ vim.keymap.set('n', '<M-K>', '<C-w>K')
 vim.keymap.set('n', '<M-L>', '<C-w>L')
 vim.keymap.set('n', '<M-x>', '<C-w>x')
 
-vim.keymap.set('n', '<C-k>', '<cmd>FloatermToggle<CR>')
-vim.keymap.set('t', '<C-k>', '<C-\\><C-n><cmd>FloatermToggle<CR>')
-
 -- apparently normal! have dependencies, so isn't a good idea call the function directly from lua
 -- so I'm quoting
 function CenterCursorOnNext(forward)

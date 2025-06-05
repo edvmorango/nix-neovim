@@ -1,12 +1,12 @@
 local notify = require('notify')
 
-notify.setup()
-
+notify.setup { top_down = false }
 
 vim.notify = notify
 
-
-vim.keymap.set('n', '<leader>d', function() notify.dismiss { pending = true, silent = true } end)
+vim.keymap.set('n', '<leader>d', function()
+  notify.dismiss { pending = true, silent = true }
+end)
 
 -- Utility functions shared between progress reports for LSP and DAP
 
@@ -24,7 +24,7 @@ local function get_notif_data(client_id, token)
   return client_notifs[client_id][token]
 end
 
-local spinner_frames = { "⣾", "⣽", "⣻", "⢿", "⡿", "⣟", "⣯", "⣷" }
+local spinner_frames = { '⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷' }
 
 local function update_spinner(client_id, token)
   local notif_data = get_notif_data(client_id, token)
