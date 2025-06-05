@@ -1,3 +1,5 @@
+vim.loader.enable()
+
 local g = vim.g -- a table to access global variables
 
 local o = vim.o
@@ -51,6 +53,7 @@ o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 o.foldtext = ''
 vim.opt.foldcolumn = '0'
 vim.opt.fillchars:append { fold = ' ' }
+o.colorcolumn = '100'
 
 function Map(mode, lhs, rhs, opts)
   local options = { noremap = true }
@@ -115,4 +118,5 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
   end,
 })
+
 vim.api.nvim_create_autocmd('LspDetach', { command = 'setl foldexpr<' })
