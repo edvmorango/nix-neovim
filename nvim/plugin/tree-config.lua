@@ -34,7 +34,6 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
   root_dirs = {},
   prefer_startup_root = false,
   sync_root_with_cwd = false,
-  respect_buf_cwd = false,
 
   reload_on_bufenter = false,
   respect_buf_cwd = true,
@@ -44,7 +43,7 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
     centralize_selection = false,
     cursorline = true,
     debounce_delay = 15,
-    width = 30,
+    width = 45,
     side = 'right',
     preserve_window_proportions = true,
     number = false,
@@ -56,7 +55,7 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
       open_win_config = {
         relative = 'editor',
         border = 'rounded',
-        width = 30,
+        width = 45,
         height = 30,
         row = 1,
         col = 1,
