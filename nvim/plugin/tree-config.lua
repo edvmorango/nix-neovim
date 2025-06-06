@@ -43,7 +43,7 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
     centralize_selection = false,
     cursorline = true,
     debounce_delay = 15,
-    width = 45,
+    width = 50,
     side = 'right',
     preserve_window_proportions = true,
     number = false,
@@ -55,7 +55,7 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
       open_win_config = {
         relative = 'editor',
         border = 'rounded',
-        width = 45,
+        width = 50,
         height = 30,
         row = 1,
         col = 1,
