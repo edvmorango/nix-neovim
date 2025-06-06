@@ -53,7 +53,6 @@ o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 o.foldtext = ''
 vim.opt.foldcolumn = '0'
 vim.opt.fillchars:append { fold = ' ' }
-o.colorcolumn = '100'
 
 function Map(mode, lhs, rhs, opts)
   local options = { noremap = true }
