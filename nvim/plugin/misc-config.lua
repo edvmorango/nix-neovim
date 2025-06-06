@@ -203,28 +203,6 @@ rooter.setup {
   fallback_to_parent = false,
 }
 
-local conform = require('conform')
-
-conform.setup {
-  format_on_save = {
-    -- These options will be passed to conform.format()
-    timeout_ms = 500,
-    lsp_fallback = true,
-  },
-  formatters_by_ft = {
-    scala = { 'scalafmt' },
-    rust = { 'rustfmt' },
-    json = { 'jq' },
-    nix = { 'alejandra' },
-    lua = { 'stylua' },
-    haskell = {
-
-      command = 'fourmolu',
-      append_args = { "--mode inplace (git ls-files '*.hs')" },
-    },
-  },
-}
-
 -- status
 local lspstatus = require('lsp-status')
 
@@ -250,4 +228,19 @@ vim.api.nvim_create_autocmd({ 'WinEnter', 'FocusGained' }, {
 vim.api.nvim_create_autocmd({ 'WinLeave', 'BufLeave', 'BufWinLeave', 'FocusLost' }, {
   group = scrollbarInit,
   command = "silent! lua require('scrollbar').clear()",
+})
+
+
+-- FOrmatter
+vim.api.nvim_create_autocmd("BufWritePre", {
+  callback = function(args)
+    local bufnr = args.buf
+    local formatting_method = vim.lsp.protocol.Methods.textDocument_formatting
+    for _, client in ipairs(vim.lsp.get_clients({ bufnr = bufnr })) do
+      if client.supports_method(formatting_method, { bufnr = bufnr }) then
+        vim.lsp.buf.format({ bufnr = bufnr, async = false })
+        break
+      end
+    end
+  end,
 })
