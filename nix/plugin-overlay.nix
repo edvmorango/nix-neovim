@@ -37,7 +37,6 @@ in {
     noice-nvim = mkNvimPlugin inputs.noice-nvim "noice-nvim";
     nvim-metals = mkNvimPlugin inputs.nvim-metals "nvim-metals";
     cmp-nvim-lsp = mkNvimPlugin inputs.cmp-nvim-lsp "cmp-nvim-lsp";
-    lsp-status-nvim = mkNvimPlugin inputs.lsp-status-nvim "lsp-status-nvim";
     nvim-tree-lua = mkNvimPlugin inputs.nvim-tree-lua "nvim-tree-lua";
     nvim-web-devicons = mkNvimPlugin inputs.nvim-web-devicons "nvim-web-devicons";
     lualine-nvim = mkNvimPlugin inputs.lualine-nvim "lualine-nvim";

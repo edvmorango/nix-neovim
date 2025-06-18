@@ -57,7 +57,6 @@ with final.pkgs.lib; let
     noice-nvim
     nvim-metals
     cmp-nvim-lsp
-    lsp-status-nvim
     nvim-tree-lua
     nvim-web-devicons
     lualine-nvim

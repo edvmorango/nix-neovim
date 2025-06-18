@@ -204,9 +204,9 @@ rooter.setup {
 }
 
 -- status
-local lspstatus = require('lsp-status')
+-- local lspstatus = require('lsp-status')
 
-lspstatus.config { status_symbol = 'LSP' }
+--lspstatus.config { status_symbol = 'LSP' }
 
 -- lspstatus.register_progress()
 

@@ -1,5 +1,14 @@
 local lualine = require('lualine')
 
+local function lsp_active()
+  local clients = vim.lsp.get_clients({ bufnr = 0 })
+  if next(clients) ~= nil then
+    return "LSP" -- you can swap this icon/text for anything you like
+  end
+  return ""
+end
+
+
 lualine.setup {
   options = {
     icons_enabled = true,
@@ -12,8 +21,8 @@ lualine.setup {
   },
   sections = {
     lualine_a = { 'mode' },
-    lualine_b = { 'branch', 'require("lsp-status").status()' },
-    lualine_c = { 'filename' },
+    lualine_b = { 'branch', lsp_active },
+    lualine_c = { 'diagnostics', { 'filename', path = 2 } },
     lualine_x = { 'encoding', 'fileformat', 'filetype' },
     lualine_y = { 'progress' },
     lualine_z = { 'location' }

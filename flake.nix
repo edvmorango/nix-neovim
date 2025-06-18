@@ -110,11 +110,7 @@
       url = "github:hrsh7th/cmp-nvim-lsp";
       flake = false;
     };
-    lsp-status-nvim = {
-      url = "github:nvim-lua/lsp-status.nvim";
-      flake = false;
-    };
-    nvim-tree-lua = {
+        nvim-tree-lua = {
       url = "github:nvim-tree/nvim-tree.lua";
       flake = false;
     };
