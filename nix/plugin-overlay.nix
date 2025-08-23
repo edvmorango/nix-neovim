@@ -1,12 +1,17 @@
-{inputs}: final: prev: let
-  mkNvimPlugin = src: pname:
+{ inputs }:
+final: prev:
+let
+  mkNvimPlugin =
+    src: pname:
     prev.pkgs.vimUtils.buildVimPlugin {
       inherit pname src;
       version = src.lastModifiedDate;
       doCheck = false;
     };
-in {
+in
+{
   nvimPlugins = {
+    tla-nvim = mkNvimPlugin inputs.tla-nvim "tla-nvim";
     hover-nvim = mkNvimPlugin inputs.hover-nvim "hover-nvim";
     charleston-nvim = mkNvimPlugin inputs.charleston-nvim "charleston-nvim";
     vague-nvim = mkNvimPlugin inputs.vague-nvim "vague-nvim";

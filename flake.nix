@@ -13,6 +13,11 @@
       flake = false;
     };
 
+    tla-nvim = {
+      url = "github:susliko/tla.nvim";
+      flake = false;
+    };
+
     blink-cmp = {
       url = "github:Saghen/blink.cmp";
       flake = true;
@@ -110,7 +115,7 @@
       url = "github:hrsh7th/cmp-nvim-lsp";
       flake = false;
     };
-        nvim-tree-lua = {
+    nvim-tree-lua = {
       url = "github:nvim-tree/nvim-tree.lua";
       flake = false;
     };
@@ -293,60 +298,66 @@
     };
   };
 
-  outputs = inputs @ {
-    self,
-    nixpkgs,
-    neovim-nightly,
-    gen-luarc,
-    flake-utils,
-    ...
-  }: let
-    systems = builtins.attrNames nixpkgs.legacyPackages;
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      neovim-nightly,
+      gen-luarc,
+      flake-utils,
+      ...
+    }:
+    let
+      systems = builtins.attrNames nixpkgs.legacyPackages;
 
-    # This is where the Neovim derivation is built.
-    plugin-overlay = import ./nix/plugin-overlay.nix {inherit inputs;};
-    neovim-overlay = import ./nix/neovim-overlay.nix {inherit inputs;};
-  in
-    flake-utils.lib.eachSystem systems (system: let
-      pkgs = import nixpkgs {
-        inherit system;
-        overlays = [
-          # Import the overlay, so that the final Neovim derivation(s) can be accessed via pkgs.<nvim-pkg>
-          plugin-overlay
-          neovim-overlay
-          # This adds a function can be used to generate a .luarc.json
-          # containing the Neovim API all plugins in the workspace directory.
-          # The generated file can be symlinked in the devShell's shellHook.
-          gen-luarc.overlays.default
-          neovim-nightly.overlays.default
-        ];
-      };
-      shell = pkgs.mkShell {
-        name = "nvim-devShell";
-        buildInputs = with pkgs; [
-          # Tools for Lua and Nix development, useful for editing files in this repo
-          lua-language-server
-          nil
-          stylua
-          luajitPackages.luacheck
-          nvim-dev
-        ];
-        shellHook = ''
-          # symlink the .luarc.json generated in the overlay
-          ln -fs ${pkgs.nvim-luarc-json} .luarc.json
-          # allow quick iteration of lua configs
-          ln -Tfns $PWD/nvim ~/.config/nvim-dev
-        '';
-      };
-    in {
-      packages = rec {
-        default = nvim;
-        nvim = pkgs.nvim-pkg;
-      };
-      devShells = {
-        default = shell;
-      };
-    })
+      # This is where the Neovim derivation is built.
+      plugin-overlay = import ./nix/plugin-overlay.nix { inherit inputs; };
+      neovim-overlay = import ./nix/neovim-overlay.nix { inherit inputs; };
+    in
+    flake-utils.lib.eachSystem systems (
+      system:
+      let
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = [
+            # Import the overlay, so that the final Neovim derivation(s) can be accessed via pkgs.<nvim-pkg>
+            plugin-overlay
+            neovim-overlay
+            # This adds a function can be used to generate a .luarc.json
+            # containing the Neovim API all plugins in the workspace directory.
+            # The generated file can be symlinked in the devShell's shellHook.
+            gen-luarc.overlays.default
+            neovim-nightly.overlays.default
+          ];
+        };
+        shell = pkgs.mkShell {
+          name = "nvim-devShell";
+          buildInputs = with pkgs; [
+            # Tools for Lua and Nix development, useful for editing files in this repo
+            lua-language-server
+            nil
+            stylua
+            luajitPackages.luacheck
+            nvim-dev
+          ];
+          shellHook = ''
+            # symlink the .luarc.json generated in the overlay
+            ln -fs ${pkgs.nvim-luarc-json} .luarc.json
+            # allow quick iteration of lua configs
+            ln -Tfns $PWD/nvim ~/.config/nvim-dev
+          '';
+        };
+      in
+      {
+        packages = rec {
+          default = nvim;
+          nvim = pkgs.nvim-pkg;
+        };
+        devShells = {
+          default = shell;
+        };
+      }
+    )
     // {
       # You can add this overlay to your NixOS configuration
       overlays.default = neovim-overlay;
