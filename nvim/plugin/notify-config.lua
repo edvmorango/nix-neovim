@@ -2,7 +2,23 @@ local notify = require('notify')
 
 notify.setup { top_down = false }
 
-vim.notify = notify
+
+
+local notify_modified = function(msg, level, opts)
+  local text = msg
+
+  if type(msg) == 'table' then
+    text = table.concat(msg, " ")
+  end
+
+  if (text ~= nil and text:match("JAVA_HOME")) then
+    return
+  end
+
+  notify(msg, level, opts)
+end
+
+vim.notify = notify_modified
 
 vim.keymap.set('n', '<leader>d', function()
   notify.dismiss { pending = true, silent = true }

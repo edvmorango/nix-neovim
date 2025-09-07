@@ -1,6 +1,6 @@
 local noice = require("noice")
 
-noice.setup({
+noice.setup {
   lsp = {
     -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
     override = {
@@ -26,6 +26,7 @@ noice.setup({
       },
       opts = { skip = true },
     },
+
     {
       filter = {
         event = "msg_show",
@@ -35,4 +36,4 @@ noice.setup({
       opts = { skip = true },
     },
   },
-})
+}
