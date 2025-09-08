@@ -10,5 +10,5 @@ return {
     },
   },
   filetypes = { 'nix' },
-  root_pattern = { 'flake.nix', '.git' }
+  root_markers = { 'flake.nix', '.git' }
 }

@@ -3,5 +3,5 @@ return {
   cmd = { 'postgrestools', 'lsp-proxy' },
   filetypes = { 'sql' },
   single_file_support = true,
-  root_pattern = { 'flake.nix', '.git', 'postgrestools.jsonc' },
+  root_makers = { 'flake.nix', '.git', 'postgrestools.jsonc' },
 }

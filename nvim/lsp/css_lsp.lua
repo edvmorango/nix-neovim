@@ -8,5 +8,5 @@ return {
     }
   },
   filetypes = { "css", "scss", "less" },
-  root_pattern = { 'flake.nix', '.git', "package.json" }
+  root_markers = { 'flake.nix', '.git', "package.json" }
 }
