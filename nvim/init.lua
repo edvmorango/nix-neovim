@@ -38,11 +38,11 @@ vim.wo.linebreak = true
 o.relativenumber = false
 o.textwidth = 120
 o.tabstop = 2
-o.clipboard = o.clipboard .. 'unnamedplus' --copy paste
+o.clipboard = o.clipboard .. 'unnamedplus'        --copy paste
 o.laststatus = 2
 o.viewoptions = 'folds,options,cursor,unix,slash' --UNIX better support
 o.encoding = 'utf-8'
-o.cmdheight = 2 -- "for echodoc
+o.cmdheight = 2                                   -- "for echodoc
 g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
 
@@ -119,3 +119,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 vim.api.nvim_create_autocmd('LspDetach', { command = 'setl foldexpr<' })
+
+
+-- lsp
+--
+vim.lsp.enable('css_variables')
+vim.lsp.enable('postgres_lsp')
+vim.lsp.enable('yamlls')
+vim.lsp.enable('dockerls')
+vim.lsp.enable('docker_compose_language_service')
