@@ -22,6 +22,8 @@ blink.setup {
       scala = { 'lsp', 'path', 'buffer', 'snippets' },
       sbt = { 'lsp', 'path', 'buffer', 'snippets' },
       nix = { 'lsp', 'path', 'snippets' },
+      sql = { 'lsp', 'path', 'snippets' },
+      css = { 'lsp', 'path', 'snippets' },
     },
   },
 
