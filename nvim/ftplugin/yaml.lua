@@ -1,5 +1,6 @@
 ---@type vim.lsp.Config
-return {
+vim.lsp.start {
+  name = "yaml-language-server",
   cmd = { "yaml-language-server", "--stdio" },
   settings = {
     yaml = {

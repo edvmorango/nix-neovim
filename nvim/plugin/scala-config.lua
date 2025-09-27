@@ -18,7 +18,7 @@ metals_config.settings.serverVersion = '1.6.2'
 
 -- metals_config.capabilities = capabilities
 
-metals_config.on_attach = function(client, _bufnr)
+metals_config.on_attach = function(_client, _bufnr)
   require('metals')
   -- require('lsp-status').on_attach(client)
 end

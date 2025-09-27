@@ -1,5 +1,5 @@
----@type vim.lsp.Config
-return {
+vim.lsp.start {
+  name = "css-variables-language-server",
   cmd = { 'css-variables-language-server', '--stdio' },
   filetypes = { 'css', 'scss', 'less' },
   root_markers = { 'package.json', '.git' },

@@ -1,5 +1,5 @@
----@type vim.lsp.Config
-return {
+vim.lsp.start {
+  name = "postgrestools",
   cmd = { 'postgrestools', 'lsp-proxy' },
   filetypes = {
     'sql',
