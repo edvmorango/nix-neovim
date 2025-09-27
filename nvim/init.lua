@@ -125,7 +125,6 @@ vim.api.nvim_create_autocmd('LspDetach', { command = 'setl foldexpr<' })
 --#region
 
 
-vim.lsp.configs['rust_analyzer'] = "lsp/rust_analyzer";
 
 
 vim.lsp.enable('rust_analyzer')
