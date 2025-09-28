@@ -7,7 +7,11 @@ blink.setup {
   enabled = function()
     return true
   end,
-  fuzzy = { implementation = 'lua', prebuilt_binaries = { download = false } },
+  fuzzy = {
+    sorts = { 'exact', 'score', 'sort_text' },
+    implementation = 'rust',
+    prebuilt_binaries = { download = false },
+  },
   keymap = {
     preset = 'enter',
   },
@@ -24,6 +28,7 @@ blink.setup {
       nix = { 'lsp', 'path', 'snippets' },
       sql = { 'lsp', 'path', 'snippets' },
       css = { 'lsp', 'path', 'snippets' },
+      rust = { 'lsp', 'path', 'snippets' },
     },
   },
 

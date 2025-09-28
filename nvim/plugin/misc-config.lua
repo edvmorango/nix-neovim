@@ -230,17 +230,22 @@ vim.api.nvim_create_autocmd({ 'WinLeave', 'BufLeave', 'BufWinLeave', 'FocusLost'
   command = "silent! lua require('scrollbar').clear()",
 })
 
-
 -- FOrmatter
-vim.api.nvim_create_autocmd("BufWritePre", {
+local conform = require('conform')
+
+conform.setup {
+  formatters_by_ft = {
+    lua = { 'stylua' },
+    rust = { 'rustfmt' },
+    scala = { 'scalafmt' },
+    nix = { 'alejandra' },
+    json = { 'jq' },
+  },
+}
+
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = '*',
   callback = function(args)
-    local bufnr = args.buf
-    local formatting_method = vim.lsp.protocol.Methods.textDocument_formatting
-    for _, client in ipairs(vim.lsp.get_clients({ bufnr = bufnr })) do
-      if client.supports_method(formatting_method, { bufnr = bufnr }) then
-        vim.lsp.buf.format({ bufnr = bufnr, async = false })
-        break
-      end
-    end
+    require('conform').format { bufnr = args.buf }
   end,
 })
