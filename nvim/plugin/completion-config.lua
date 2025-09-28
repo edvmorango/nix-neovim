@@ -9,7 +9,7 @@ blink.setup {
   end,
   fuzzy = {
     sorts = { 'exact', 'score', 'sort_text' },
-    implementation = 'rust',
+    implementation = 'lua',
     prebuilt_binaries = { download = false },
   },
   keymap = {
