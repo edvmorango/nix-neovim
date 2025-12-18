@@ -178,10 +178,9 @@ end, { silent = true })
 local fidget = require('fidget')
 
 fidget.setup {
-
-  integration = {
-    ['nvim-tree'] = {
-      enable = false,
+  notification = {
+    window = {
+      avoid = { 'NvimTree' },
     },
   },
 }
