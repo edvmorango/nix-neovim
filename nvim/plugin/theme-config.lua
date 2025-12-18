@@ -53,7 +53,7 @@ local function set_colorscheme_by_time()
   if hour >= 20 or hour < 6 then
     vim.cmd('colorscheme vague') -- Light theme
   else
-    vim.cmd('colorscheme charleston') -- Dark theme
+    vim.cmd('colorscheme vague') -- Dark theme
   end
 end
 
