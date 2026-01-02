@@ -7,7 +7,7 @@ metals_config.settings = {
   superMethodLensesEnabled = true,
   enableSemanticHighlighting = true,
   serverProperties = { '-Dmetals.enable-best-effort=true', '-Xms4G', '-Xmx8G' },
-  targetBuildTool = "sbt"
+  defaultBspToBuildTool = "sbt"
 }
 
 metals_config.init_options.statusBarProvider = 'off'
