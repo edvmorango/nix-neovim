@@ -32,6 +32,9 @@ blink.setup {
     },
   },
 
+
+  signature = { enabled = true },
+
   completion = {
     keyword = {
       range = 'prefix',

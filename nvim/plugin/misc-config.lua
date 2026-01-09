@@ -57,6 +57,7 @@ local gitsigns = require('gitsigns')
 
 gitsigns.setup()
 
+
 vim.o.updatetime = 100
 
 -- surround

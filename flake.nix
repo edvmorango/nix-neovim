@@ -45,11 +45,6 @@
       flake = false;
     };
 
-    blink-cmp = {
-      url = "github:Saghen/blink.cmp";
-      flake = true;
-    };
-
     charleston-nvim = {
       url = "github:RomanAverin/charleston.nvim";
       flake = false;
