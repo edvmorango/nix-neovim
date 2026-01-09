@@ -8,9 +8,18 @@ let
       version = src.lastModifiedDate;
       doCheck = false;
     };
+
 in
 {
   nvimPlugins = {
+
+    teide-nvim = mkNvimPlugin inputs.teide-nvim "teide-nvim";
+    mcphub-nvim = mkNvimPlugin inputs.mcphub-nvim "mcphub-nvim";
+    blink-cmp-avante = mkNvimPlugin inputs.blink-cmp-avante "blink-cmp-avante";
+    #avante-nvim = mkNvimPlugin avante-nvim "avante-nvim";
+
+    avante-nvim = prev.pkgs.vimPlugins.avante-nvim;
+
     tla-nvim = mkNvimPlugin inputs.tla-nvim "tla-nvim";
     hover-nvim = mkNvimPlugin inputs.hover-nvim "hover-nvim";
     charleston-nvim = mkNvimPlugin inputs.charleston-nvim "charleston-nvim";

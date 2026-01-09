@@ -8,6 +8,32 @@
 
     flake-utils.url = "github:numtide/flake-utils";
 
+    # AI
+
+    avante-nvim = {
+      url = "github:yetone/avante.nvim";
+      flake = false;
+    };
+
+    blink-cmp-avante = {
+      url = "github:Kaiser-Yang/blink-cmp-avante";
+      flake = false;
+    };
+
+    mcphub-nvim = {
+      url = "github:ravitemer/mcphub.nvim";
+      flake = false;
+    };
+
+    # Theme
+
+    teide-nvim = {
+      url = "github:serhez/teide.nvim";
+      flake = false;
+    };
+
+    # ---------------------
+
     hover-nvim = {
       url = "github:lewis6991/hover.nvim";
       flake = false;
@@ -299,22 +325,25 @@
     };
   };
 
-  outputs = inputs @ {
-    self,
-    nixpkgs,
-    neovim-nightly,
-    gen-luarc,
-    flake-utils,
-    ...
-  }: let
-    systems = builtins.attrNames nixpkgs.legacyPackages;
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      neovim-nightly,
+      gen-luarc,
+      flake-utils,
+      ...
+    }:
+    let
+      systems = builtins.attrNames nixpkgs.legacyPackages;
 
-    # This is where the Neovim derivation is built.
-    plugin-overlay = import ./nix/plugin-overlay.nix {inherit inputs;};
-    neovim-overlay = import ./nix/neovim-overlay.nix {inherit inputs;};
-  in
+      # This is where the Neovim derivation is built.
+      plugin-overlay = import ./nix/plugin-overlay.nix { inherit inputs; };
+      neovim-overlay = import ./nix/neovim-overlay.nix { inherit inputs; };
+    in
     flake-utils.lib.eachSystem systems (
-      system: let
+      system:
+      let
         pkgs = import nixpkgs {
           inherit system;
           overlays = [
@@ -345,7 +374,8 @@
             ln -Tfns $PWD/nvim ~/.config/nvim-dev
           '';
         };
-      in {
+      in
+      {
         packages = rec {
           default = nvim;
           nvim = pkgs.nvim-pkg;

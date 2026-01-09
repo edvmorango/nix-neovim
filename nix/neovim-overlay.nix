@@ -31,6 +31,10 @@ let
   #   ...
   # }
   all-plugins = with pkgs.nvimPlugins; [
+    teide-nvim
+    mcphub-nvim
+    blink-cmp-avante
+    avante-nvim
     tla-nvim
     hover-nvim
     charleston-nvim
