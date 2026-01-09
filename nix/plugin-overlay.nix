@@ -37,12 +37,13 @@ in
 {
   blink-cmp-fuzzy = blink-cmp-fuzzy;
   nvimPlugins = {
-    blink-cmp = mkNvimPlugin inputs.blink-cmp "blink-cmp";
+    #blink-cmp = mkNvimPlugin inputs.blink-cmp "blink-cmp";
     teide-nvim = mkNvimPlugin inputs.teide-nvim "teide-nvim";
     mcphub-nvim = mkNvimPlugin inputs.mcphub-nvim "mcphub-nvim";
     blink-cmp-avante = mkNvimPlugin inputs.blink-cmp-avante "blink-cmp-avante";
     #avante-nvim = mkNvimPlugin avante-nvim "avante-nvim";
 
+    blink-cmp = prev.pkgs.vimPlugins.blink-cmp;
     avante-nvim = prev.pkgs.vimPlugins.avante-nvim;
 
     tla-nvim = mkNvimPlugin inputs.tla-nvim "tla-nvim";
