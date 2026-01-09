@@ -103,6 +103,8 @@ vim.keymap.set('i', '<ScrollWheelRight>', nop)
 vim.keymap.set('i', '<S-ScrollWheelRight>', nop)
 vim.keymap.set('i', '<C-ScrollWheelRight>', nop)
 
+
+
 -- ex-mode
 vim.keymap.set('n', 'Q', '<nop>')
 vim.keymap.set('n', 'gQ', '<nop>')
@@ -112,6 +114,11 @@ vim.keymap.set('n', '<M-h>', '<C-w>h')
 vim.keymap.set('n', '<M-j>', '<C-w>j')
 vim.keymap.set('n', '<M-k>', '<C-w>k')
 vim.keymap.set('n', '<M-l>', '<C-w>l')
+
+vim.keymap.set("n", "<C-Left>", "<C-w>h", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-Down>", "<C-w>j", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-Up>", "<C-w>k", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-Right>", "<C-w>l", { noremap = true, silent = true })
 
 -- Moving
 vim.keymap.set('n', '<M-H>', '<C-w>H')

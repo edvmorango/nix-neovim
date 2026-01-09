@@ -4,7 +4,7 @@ require("avante").setup {
   provider = "openai", -- The provider used in Aider mode or in the planning phase of Cursor Planning Mode
   ---@alias Mode "agentic" | "legacy"
   ---@type Mode
-  mode = "legacy", -- The default mode for interaction. "agentic" uses tools to automatically generate code, "legacy" uses the old planning method to generate code.
+  mode = "agentic", -- The default mode for interaction. "agentic" uses tools to automatically generate code, "legacy" uses the old planning method to generate code.
   -- WARNING: Since auto-suggestions are a high-frequency operation and therefore expensive,
   -- currently designating it as `copilot` provider is dangerous because: https://github.com/yetone/avante.nvim/issues/1048
   -- Of course, you can reduce the request frequency by increasing `suggestion.debounce`.
@@ -13,7 +13,7 @@ require("avante").setup {
     openai = {
       endpoint = "https://api.openai.com/v1",
       model = "gpt-4o-mini", -- or gpt-4o / gpt-4.1
-      temperature = 0.1,
+      extra_request_body = { temperature = 0.1 },
       max_tokens = 4096,
       timeout = 30000, -- ms
     }

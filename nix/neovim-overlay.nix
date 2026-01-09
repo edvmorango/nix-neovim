@@ -127,6 +127,7 @@ in
     inherit extraPackages;
     appName = "nvim-dev";
     wrapRc = false;
+    extraPackages = [ prev.pkgs.blink-cmp-fuzzy ];
   };
 
   # This can be symlinked in the devShell's shellHook

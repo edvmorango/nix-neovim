@@ -9,10 +9,35 @@ let
       doCheck = false;
     };
 
+  blink-cmp-fuzzy =
+    (prev.pkgs.makeRustPlatform {
+      cargo = prev.pkgs.rust-bin.nightly.latest.default;
+      rustc = prev.pkgs.rust-bin.nightly.latest.default;
+    }).buildRustPackage
+      {
+        pname = "blink-cmp-fuzzy";
+        version = inputs.blink-cmp.lastModifiedDate;
+
+        src = inputs.blink-cmp;
+
+        cargoLock.lockFile = "${inputs.blink-cmp}/Cargo.lock";
+
+        cargoBuildFlags = [
+          "-p"
+          "blink-cmp-fuzzy"
+        ];
+
+        nativeBuildInputs = [
+          prev.pkgs.pkg-config
+          prev.pkgs.git
+        ];
+
+      };
 in
 {
+  blink-cmp-fuzzy = blink-cmp-fuzzy;
   nvimPlugins = {
-
+    blink-cmp = mkNvimPlugin inputs.blink-cmp "blink-cmp";
     teide-nvim = mkNvimPlugin inputs.teide-nvim "teide-nvim";
     mcphub-nvim = mkNvimPlugin inputs.mcphub-nvim "mcphub-nvim";
     blink-cmp-avante = mkNvimPlugin inputs.blink-cmp-avante "blink-cmp-avante";
@@ -24,7 +49,6 @@ in
     hover-nvim = mkNvimPlugin inputs.hover-nvim "hover-nvim";
     charleston-nvim = mkNvimPlugin inputs.charleston-nvim "charleston-nvim";
     vague-nvim = mkNvimPlugin inputs.vague-nvim "vague-nvim";
-    blink-cmp = mkNvimPlugin inputs.blink-cmp "blink-cmp";
     evergarden = mkNvimPlugin inputs.evergarden "evergarden";
     nvim-unception = mkNvimPlugin inputs.nvim-unception "nvim-unception";
     nvim-surround = mkNvimPlugin inputs.nvim-surround "nvim-surround";
