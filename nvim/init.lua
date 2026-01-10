@@ -46,6 +46,7 @@ o.cmdheight = 2                                   -- "for echodoc
 g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
 
+o.autoread = true
 o.foldenable = true
 o.foldlevel = 99
 o.foldmethod = 'expr'

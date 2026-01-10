@@ -9,33 +9,8 @@ let
       doCheck = false;
     };
 
-  blink-cmp-fuzzy =
-    (prev.pkgs.makeRustPlatform {
-      cargo = prev.pkgs.rust-bin.nightly.latest.default;
-      rustc = prev.pkgs.rust-bin.nightly.latest.default;
-    }).buildRustPackage
-      {
-        pname = "blink-cmp-fuzzy";
-        version = inputs.blink-cmp.lastModifiedDate;
-
-        src = inputs.blink-cmp;
-
-        cargoLock.lockFile = "${inputs.blink-cmp}/Cargo.lock";
-
-        cargoBuildFlags = [
-          "-p"
-          "blink-cmp-fuzzy"
-        ];
-
-        nativeBuildInputs = [
-          prev.pkgs.pkg-config
-          prev.pkgs.git
-        ];
-
-      };
 in
 {
-  blink-cmp-fuzzy = blink-cmp-fuzzy;
   nvimPlugins = {
     #blink-cmp = mkNvimPlugin inputs.blink-cmp "blink-cmp";
     teide-nvim = mkNvimPlugin inputs.teide-nvim "teide-nvim";
@@ -45,6 +20,9 @@ in
 
     blink-cmp = prev.pkgs.vimPlugins.blink-cmp;
     avante-nvim = prev.pkgs.vimPlugins.avante-nvim;
+    aider-nvim = mkNvimPlugin inputs.aider-nvim "aider-nvim";
+
+    snacks-nvim = mkNvimPlugin inputs.snacks-nvim "snacks-nvim";
 
     tla-nvim = mkNvimPlugin inputs.tla-nvim "tla-nvim";
     hover-nvim = mkNvimPlugin inputs.hover-nvim "hover-nvim";

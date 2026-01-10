@@ -10,6 +10,10 @@
     flake-utils.url = "github:numtide/flake-utils";
 
     # AI
+    aider-nvim = {
+      url = "github:GeorgesAlkhouri/nvim-aider";
+      flake = true;
+    };
 
     avante-nvim = {
       url = "github:yetone/avante.nvim";
@@ -34,6 +38,11 @@
     };
 
     # ---------------------
+
+    snacks-nvim = {
+      url = "github:folke/snacks.nvim";
+      flake = false;
+    };
 
     hover-nvim = {
       url = "github:lewis6991/hover.nvim";
