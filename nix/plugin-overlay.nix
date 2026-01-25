@@ -17,7 +17,7 @@ in
     mcphub-nvim = mkNvimPlugin inputs.mcphub-nvim "mcphub-nvim";
     blink-cmp-avante = mkNvimPlugin inputs.blink-cmp-avante "blink-cmp-avante";
     #avante-nvim = mkNvimPlugin avante-nvim "avante-nvim";
-
+    opencode-nvim = prev.pkgs.vimplugin-opencode.nvim;
     blink-cmp = prev.pkgs.vimPlugins.blink-cmp;
     avante-nvim = prev.pkgs.vimPlugins.avante-nvim;
     aider-nvim = mkNvimPlugin inputs.aider-nvim "aider-nvim";
