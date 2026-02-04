@@ -1,11 +1,18 @@
 local metals_config = require('metals').bare_config()
 
 metals_config.settings = {
-  showImplicitArguments = true,
   excludedPackages = { 'akka.actor.typed.javadsl', 'com.github.swagger.akka.javadsl' },
-  showInferredType = true,
   superMethodLensesEnabled = true,
   enableSemanticHighlighting = true,
+  inlayHints = {
+    byNameParameters = { enable = true },
+    hintsInPatternMatch = { enable = true },
+    implicitArguments = { enable = true },
+    implicitConversions = { enable = true },
+    inferredTypes = { enable = true },
+    typeParameters = { enable = true },
+  },
+
   serverProperties = { '-Dmetals.enable-best-effort=true', '-Xms4G', '-Xmx8G',
     "-Djol.magicFieldOffset=true",
     "-Djol.tryWithSudo=true",
@@ -33,7 +40,8 @@ metals_config.settings = {
     "-Xlog:all=warning,gc=warning:stderr",
   },
   defaultBspToBuildTool = "sbt",
-  startMcpServer = true
+  startMcpServer = true,
+  mcpClient = "amp"
 }
 
 metals_config.init_options.statusBarProvider = 'off'
