@@ -33,7 +33,7 @@ metals_config.settings = {
     "-Xlog:all=warning,gc=warning:stderr",
   },
   defaultBspToBuildTool = "sbt",
-  startMcpServer = "true"
+  startMcpServer = true
 }
 
 metals_config.init_options.statusBarProvider = 'off'
