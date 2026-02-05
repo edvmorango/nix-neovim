@@ -9,28 +9,12 @@
 
     flake-utils.url = "github:numtide/flake-utils";
 
-    # AI
-    aider-nvim = {
-      url = "github:GeorgesAlkhouri/nvim-aider";
-      flake = true;
-    };
-
-    avante-nvim = {
-      url = "github:yetone/avante.nvim";
-      flake = false;
-    };
-
-    blink-cmp-avante = {
-      url = "github:Kaiser-Yang/blink-cmp-avante";
-      flake = false;
-    };
-
-    mcphub-nvim = {
-      url = "github:ravitemer/mcphub.nvim";
-      flake = false;
-    };
-
     # Theme
+
+    luxterm-nvim = {
+      url = "github:LuxVim/nvim-luxterm";
+      flake = false;
+    };
 
     teide-nvim = {
       url = "github:serhez/teide.nvim";

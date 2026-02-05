@@ -87,7 +87,19 @@ vim.keymap.set({ 'n', 'o', 'x' }, 'ge', function()
   spider.motion('ge')
 end, { desc = 'Spider-ge' })
 
---mouse
+-- window
+vim.keymap.set('n', '<C-v>', function()
+  cmd.vsplit()
+  cmd('wincmd l')
+end, { noremap = true })
+vim.keymap.set('n', '<C-c>', function()
+  cmd.split()
+  cmd('wincmd j')
+end, { noremap = true })
+
+
+
+--mous
 
 local nop = function() end
 
@@ -243,7 +255,7 @@ vim.api.nvim_create_autocmd('BufWritePre', {
     local bufnr = args.buf
     local formatting_method = vim.lsp.protocol.Methods.textDocument_formatting
     for _, client in ipairs(vim.lsp.get_clients { bufnr = bufnr }) do
-      if client.supports_method(formatting_method, { bufnr = bufnr }) then
+      if client:supports_method(formatting_method, { bufnr = bufnr }) then
         vim.lsp.buf.format { bufnr = bufnr, async = false }
         break
       end

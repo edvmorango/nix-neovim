@@ -12,18 +12,13 @@ let
 in
 {
   nvimPlugins = {
-    #blink-cmp = mkNvimPlugin inputs.blink-cmp "blink-cmp";
+
+    luxterm-nvim = mkNvimPlugin inputs.luxterm-nvim "luxterm-nvim";
     teide-nvim = mkNvimPlugin inputs.teide-nvim "teide-nvim";
-    mcphub-nvim = mkNvimPlugin inputs.mcphub-nvim "mcphub-nvim";
-    blink-cmp-avante = mkNvimPlugin inputs.blink-cmp-avante "blink-cmp-avante";
-    #avante-nvim = mkNvimPlugin avante-nvim "avante-nvim";
+    amp-nvim = prev.pkgs.vimPlugins.amp-nvim;
     opencode-nvim = prev.pkgs.vimplugin-opencode.nvim;
     blink-cmp = prev.pkgs.vimPlugins.blink-cmp;
-    avante-nvim = prev.pkgs.vimPlugins.avante-nvim;
-    aider-nvim = mkNvimPlugin inputs.aider-nvim "aider-nvim";
-
-    snacks-nvim = mkNvimPlugin inputs.snacks-nvim "snacks-nvim";
-
+    toggle-term = prev.pkgs.vimPlugins.toggleterm-nvim;
     tla-nvim = mkNvimPlugin inputs.tla-nvim "tla-nvim";
     hover-nvim = mkNvimPlugin inputs.hover-nvim "hover-nvim";
     charleston-nvim = mkNvimPlugin inputs.charleston-nvim "charleston-nvim";

@@ -31,12 +31,10 @@ let
   #   ...
   # }
   all-plugins = with pkgs.nvimPlugins; [
-    snacks-nvim
-    aider-nvim
+    luxterm-nvim
+    toggle-term
+    amp-nvim
     teide-nvim
-    #mcphub-nvim
-    #blink-cmp-avante
-    #avante-nvim
     tla-nvim
     hover-nvim
     #charleston-nvim
