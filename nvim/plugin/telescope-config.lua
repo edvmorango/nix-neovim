@@ -200,9 +200,6 @@ vim.keymap.set('n', 'gy', builtin.lsp_type_definitions, { silent = true })
 vim.keymap.set('n', 'gi', builtin.lsp_implementations, { silent = true })
 vim.keymap.set('n', 'gr', builtin.lsp_references, { silent = true })
 vim.keymap.set('n', '<C-l>', builtin.lsp_dynamic_workspace_symbols, { silent = true })
-vim.keymap.set('n', '<C-s>', function()
-  builtin.symbols { sources = { 'math' } }
-end, { silent = true })
 
 vim.keymap.set('n', 'K', vim.lsp.buf.hover, { silent = true })
 vim.keymap.set('n', 'gs', vim.lsp.buf.document_symbol, { silent = true })

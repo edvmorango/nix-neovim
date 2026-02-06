@@ -51,5 +51,8 @@ local term = require("floatty").setup {
   },
 }
 
-vim.keymap.set('n', '<C-a>', function() term.toggle() end)
-vim.keymap.set('t', '<C-a>', function() term.toggle() end)
+vim.keymap.set('n', '<C-a>', function() term.toggle({ id = 1 }) end)
+vim.keymap.set('t', '<C-a>', function() term.toggle({ id = 1 }) end)
+
+vim.keymap.set('n', '<C-s>', function() term.toggle({ id = 2 }) end)
+vim.keymap.set('t', '<C-s>', function() term.toggle({ id = 2 }) end)
