@@ -31,6 +31,7 @@ let
   #   ...
   # }
   all-plugins = with pkgs.nvimPlugins; [
+    floatty-nvim
     luxterm-nvim
     toggle-term
     amp-nvim

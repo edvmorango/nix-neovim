@@ -12,6 +12,7 @@ let
 in
 {
   nvimPlugins = {
+    floatty-nvim = mkNvimPlugin inputs.floatty-nvim "floatty-nvim";
 
     luxterm-nvim = mkNvimPlugin inputs.luxterm-nvim "luxterm-nvim";
     teide-nvim = mkNvimPlugin inputs.teide-nvim "teide-nvim";

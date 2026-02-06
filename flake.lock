@@ -249,6 +249,22 @@
         "type": "github"
       }
     },
+    "floatty-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1757702119,
+        "narHash": "sha256-12WW1ysEyeMd7rhWET9Gx6wIvYl70AZdM9EdadTo+hY=",
+        "owner": "ingur",
+        "repo": "floatty.nvim",
+        "rev": "e82ae3bbe46b8e28918bcf7b9f3d5c36304e0c9f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ingur",
+        "repo": "floatty.nvim",
+        "type": "github"
+      }
+    },
     "gen-luarc": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -1035,6 +1051,7 @@
         "evergarden": "evergarden",
         "fidget-nvim": "fidget-nvim",
         "flake-utils": "flake-utils",
+        "floatty-nvim": "floatty-nvim",
         "gen-luarc": "gen-luarc",
         "gitsigns-nvim": "gitsigns-nvim",
         "highlight-undo-nvim": "highlight-undo-nvim",
@@ -1076,7 +1093,6 @@
         "rust-overlay": "rust-overlay",
         "scrollbar-nvim": "scrollbar-nvim",
         "search-nvim": "search-nvim",
-        "snacks-nvim": "snacks-nvim",
         "substitute-nvim": "substitute-nvim",
         "teide-nvim": "teide-nvim",
         "telescope-glyph-nvim": "telescope-glyph-nvim",
@@ -1148,22 +1164,6 @@
       "original": {
         "owner": "FabianWirth",
         "repo": "search.nvim",
-        "type": "github"
-      }
-    },
-    "snacks-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1763464072,
-        "narHash": "sha256-vRedYg29QGPGW0hOX9qbRSIImh1d/SoDZHImDF2oqKM=",
-        "owner": "folke",
-        "repo": "snacks.nvim",
-        "rev": "fe7cfe9800a182274d0f868a74b7263b8c0c020b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "folke",
-        "repo": "snacks.nvim",
         "type": "github"
       }
     },

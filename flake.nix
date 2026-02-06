@@ -9,7 +9,11 @@
 
     flake-utils.url = "github:numtide/flake-utils";
 
-    # Theme
+    #terminal
+    floatty-nvim = {
+      url = "github:ingur/floatty.nvim";
+      flake = false;
+    };
 
     luxterm-nvim = {
       url = "github:LuxVim/nvim-luxterm";
@@ -22,11 +26,6 @@
     };
 
     # ---------------------
-
-    snacks-nvim = {
-      url = "github:folke/snacks.nvim";
-      flake = false;
-    };
 
     hover-nvim = {
       url = "github:lewis6991/hover.nvim";
