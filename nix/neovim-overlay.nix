@@ -31,6 +31,7 @@ let
   #   ...
   # }
   all-plugins = with pkgs.nvimPlugins; [
+    smart-paste-nvim
     floatty-nvim
     luxterm-nvim
     toggle-term

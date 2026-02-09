@@ -9,6 +9,11 @@
 
     flake-utils.url = "github:numtide/flake-utils";
 
+    smart-paste-nvim = {
+      url = "github:nemanjamalesija/smart-paste.nvim";
+      flake = false;
+    };
+
     #terminal
     floatty-nvim = {
       url = "github:ingur/floatty.nvim";

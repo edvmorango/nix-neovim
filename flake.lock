@@ -1093,6 +1093,7 @@
         "rust-overlay": "rust-overlay",
         "scrollbar-nvim": "scrollbar-nvim",
         "search-nvim": "search-nvim",
+        "smart-paste-nvim": "smart-paste-nvim",
         "substitute-nvim": "substitute-nvim",
         "teide-nvim": "teide-nvim",
         "telescope-glyph-nvim": "telescope-glyph-nvim",
@@ -1164,6 +1165,22 @@
       "original": {
         "owner": "FabianWirth",
         "repo": "search.nvim",
+        "type": "github"
+      }
+    },
+    "smart-paste-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1770654654,
+        "narHash": "sha256-PRvuw8LhzmlODX+gleEa6Zx+Z/21WpJzkOqiKmkXtwk=",
+        "owner": "nemanjamalesija",
+        "repo": "smart-paste.nvim",
+        "rev": "b26247e87d278936ec46c056e29a709bb5c0d6f0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nemanjamalesija",
+        "repo": "smart-paste.nvim",
         "type": "github"
       }
     },

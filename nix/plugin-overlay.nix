@@ -13,7 +13,7 @@ in
 {
   nvimPlugins = {
     floatty-nvim = mkNvimPlugin inputs.floatty-nvim "floatty-nvim";
-
+    smart-paste-nvim = mkNvimPlugin inputs.smart-paste-nvim "smart-paste-nvim";
     luxterm-nvim = mkNvimPlugin inputs.luxterm-nvim "luxterm-nvim";
     teide-nvim = mkNvimPlugin inputs.teide-nvim "teide-nvim";
     amp-nvim = prev.pkgs.vimPlugins.amp-nvim;
