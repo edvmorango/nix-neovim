@@ -253,11 +253,26 @@ vim.api.nvim_create_autocmd({ 'WinLeave', 'BufLeave', 'BufWinLeave', 'FocusLost'
 vim.api.nvim_create_autocmd('BufWritePre', {
   callback = function(args)
     local bufnr = args.buf
+    local filename = vim.api.nvim_buf_get_name(bufnr)
+    
+    -- Try LSP formatting first
     local formatting_method = vim.lsp.protocol.Methods.textDocument_formatting
+    local formatted = false
     for _, client in ipairs(vim.lsp.get_clients { bufnr = bufnr }) do
       if client:supports_method(formatting_method, { bufnr = bufnr }) then
         vim.lsp.buf.format { bufnr = bufnr, async = false }
+        formatted = true
         break
+      end
+    end
+    
+    -- If LSP formatting didn't work and file is .tla, try tlafmt
+    if not formatted and filename:match('%.tla$') then
+      local result = vim.fn.system({ 'tlafmt', filename })
+      if vim.v.shell_error == 0 then
+        -- Write tlafmt output to the buffer
+        local lines = vim.split(result, '\n')
+        vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, lines)
       end
     end
   end,
