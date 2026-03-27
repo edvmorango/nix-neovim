@@ -268,11 +268,19 @@ vim.api.nvim_create_autocmd('BufWritePre', {
     
     -- If LSP formatting didn't work and file is .tla, try tlafmt
     if not formatted and filename:match('%.tla$') then
-      local result = vim.fn.system({ 'tlafmt', filename })
+      local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+      local input = table.concat(lines, '\n')
+      local result = vim.fn.system({ 'tlafmt', '--stdin' }, input .. '\n')
       if vim.v.shell_error == 0 then
-        -- Write tlafmt output to the buffer
-        local lines = vim.split(result, '\n')
-        vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, lines)
+        -- Write tlafmt output to the buffer, filtering out warnings
+        local formatted_lines = vim.split(result, '\n')
+        local clean_lines = {}
+        for _, line in ipairs(formatted_lines) do
+          if not line:match('^%[WARN%]') then
+            table.insert(clean_lines, line)
+          end
+        end
+        vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, clean_lines)
       end
     end
   end,
