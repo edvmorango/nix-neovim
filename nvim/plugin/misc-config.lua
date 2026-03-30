@@ -276,7 +276,7 @@ vim.api.nvim_create_autocmd('BufWritePre', {
         local formatted_lines = vim.split(result, '\n')
         local clean_lines = {}
         for _, line in ipairs(formatted_lines) do
-          if not line:match('^%[WARN%]') or not line:match('^%[ERROR%]') then
+          if not line:match('^%[WARN%]') and not line:match('^%[ERROR%]') then
             table.insert(clean_lines, line)
           end
         end
