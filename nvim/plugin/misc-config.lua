@@ -254,7 +254,7 @@ vim.api.nvim_create_autocmd('BufWritePre', {
   callback = function(args)
     local bufnr = args.buf
     local filename = vim.api.nvim_buf_get_name(bufnr)
-    
+
     -- Try LSP formatting first
     local formatting_method = vim.lsp.protocol.Methods.textDocument_formatting
     local formatted = false
@@ -265,7 +265,7 @@ vim.api.nvim_create_autocmd('BufWritePre', {
         break
       end
     end
-    
+
     -- If LSP formatting didn't work and file is .tla, try tlafmt
     if not formatted and filename:match('%.tla$') then
       local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
@@ -276,7 +276,7 @@ vim.api.nvim_create_autocmd('BufWritePre', {
         local formatted_lines = vim.split(result, '\n')
         local clean_lines = {}
         for _, line in ipairs(formatted_lines) do
-          if not line:match('^%[WARN%]') then
+          if not line:match('^%[WARN%]') or not line:match('^%[ERROR%]') then
             table.insert(clean_lines, line)
           end
         end
