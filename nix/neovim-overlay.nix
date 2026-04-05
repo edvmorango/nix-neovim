@@ -35,7 +35,6 @@ let
     floatty-nvim
     luxterm-nvim
     toggle-term
-    amp-nvim
     teide-nvim
     tla-nvim
     hover-nvim

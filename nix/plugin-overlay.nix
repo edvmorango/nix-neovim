@@ -16,7 +16,6 @@ in
     smart-paste-nvim = mkNvimPlugin inputs.smart-paste-nvim "smart-paste-nvim";
     luxterm-nvim = mkNvimPlugin inputs.luxterm-nvim "luxterm-nvim";
     teide-nvim = mkNvimPlugin inputs.teide-nvim "teide-nvim";
-    amp-nvim = prev.pkgs.vimPlugins.amp-nvim;
     opencode-nvim = prev.pkgs.vimplugin-opencode.nvim;
     blink-cmp = prev.pkgs.vimPlugins.blink-cmp;
     toggle-term = prev.pkgs.vimPlugins.toggleterm-nvim;
