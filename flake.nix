@@ -231,10 +231,6 @@
       url = "github:chrisbra/unicode.vim";
       flake = false;
     };
-    vim-illuminate = {
-      url = "github:RRethy/vim-illuminate";
-      flake = false;
-    };
     highlight-undo-nvim = {
       url = "github:tzachar/highlight-undo.nvim";
       flake = false;

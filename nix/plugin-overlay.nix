@@ -72,7 +72,6 @@ in
     lspkind-nvim = mkNvimPlugin inputs.lspkind-nvim "lspkind-nvim";
     yankbank-nvim = mkNvimPlugin inputs.yankbank-nvim "yankbank-nvim";
     unicode-vim = mkNvimPlugin inputs.unicode-vim "unicode-vim";
-    vim-illuminate = mkNvimPlugin inputs.vim-illuminate "vim-illuminate";
     highlight-undo-nvim = mkNvimPlugin inputs.highlight-undo-nvim "highlight-undo-nvim";
     vim-cabalfmt = mkNvimPlugin inputs.vim-cabalfmt "vim-cabalfmt";
     telescope-nvim = mkNvimPlugin inputs.telescope-nvim "telescope-nvim";

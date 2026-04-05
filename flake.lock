@@ -1112,7 +1112,6 @@
         "unicode-vim": "unicode-vim",
         "vague-nvim": "vague-nvim",
         "vim-cabalfmt": "vim-cabalfmt",
-        "vim-illuminate": "vim-illuminate",
         "vim-rooter": "vim-rooter",
         "vim-scala": "vim-scala",
         "yankbank-nvim": "yankbank-nvim"
@@ -1484,22 +1483,6 @@
       "original": {
         "owner": "sdiehl",
         "repo": "vim-cabalfmt",
-        "type": "github"
-      }
-    },
-    "vim-illuminate": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1748105647,
-        "narHash": "sha256-KqAJRCtDBG5xsvNsqkxoBdDckg02u4NBBreYQw7BphA=",
-        "owner": "RRethy",
-        "repo": "vim-illuminate",
-        "rev": "0d1e93684da00ab7c057410fecfc24f434698898",
-        "type": "github"
-      },
-      "original": {
-        "owner": "RRethy",
-        "repo": "vim-illuminate",
         "type": "github"
       }
     },

@@ -89,7 +89,6 @@ let
     lspkind-nvim
     yankbank-nvim
     unicode-vim
-    vim-illuminate
     highlight-undo-nvim
     vim-cabalfmt
     telescope-nvim
