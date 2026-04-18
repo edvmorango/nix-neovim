@@ -5,7 +5,7 @@ vim.opt.runtimepath:append(parsers_path)
 ---@diagnostic disable-next-line: missing-fields
 require('nvim-treesitter.configs').setup {
   -- A list of parser names, or "all"
-  ensure_installed = { 'rust', 'scala', 'lua', 'purescript', 'json', 'regex', 'vim', 'bash', 'nix', 'yaml', 'hcl', "tlaplus", "css", "html", "yaml" },
+  ensure_installed = { 'rust', 'scala', 'lua', 'elixir', 'purescript', 'json', 'regex', 'vim', 'bash', 'nix', 'yaml', 'hcl', "tlaplus", "css", "html", "yaml" },
 
   -- aprsers
   parser_install_dir = parsers_path,
