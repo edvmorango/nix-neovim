@@ -20,7 +20,7 @@ metals_config.settings = {
 }
 
 metals_config.init_options.statusBarProvider = 'off'
-metals_config.settings.serverVersion = '2.0.0-M8'
+metals_config.settings.serverVersion = '1.6.7'
 
 metals_config.on_attach = function(_client, _bufnr)
   require('metals')
