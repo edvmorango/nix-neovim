@@ -133,10 +133,7 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
     update_root = true,
     ignore_list = {},
   },
-  system_open = {
-    cmd = '',
-    args = {},
-  },
+  --
   diagnostics = {
     enable = true,
     show_on_dirs = true,
