@@ -119,10 +119,14 @@
       flake = false;
     };
     nvim-treesitter = {
-      url = "github:nvim-treesitter/nvim-treesitter?ref=master";
-
+      url = "github:neovim-treesitter/nvim-treesitter";
       flake = false;
     };
+    nvim-treesitter-parser-registry = {
+      url = "github:neovim-treesitter/treesitter-parser-registry";
+      flake = false;
+    };
+
     noice-nvim = {
       url = "github:folke/noice.nvim";
       flake = false;

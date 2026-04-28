@@ -943,17 +943,32 @@
     "nvim-treesitter": {
       "flake": false,
       "locked": {
-        "lastModified": 1774291338,
-        "narHash": "sha256-dyYV/Qhugt3ceayKYtTXQAh86CBaDtRzgS2nEgYD8lg=",
-        "owner": "nvim-treesitter",
+        "lastModified": 1776106405,
+        "narHash": "sha256-1BCmysc4idpbhBPm4OovO/87WDjZIfiKUQJ3YsTnP5c=",
+        "owner": "neovim-treesitter",
         "repo": "nvim-treesitter",
-        "rev": "cf12346a3414fa1b06af75c79faebe7f76df080a",
+        "rev": "df7489eeea351bece7fd0f9c825be5cb6a1438f0",
         "type": "github"
       },
       "original": {
-        "owner": "nvim-treesitter",
-        "ref": "master",
+        "owner": "neovim-treesitter",
         "repo": "nvim-treesitter",
+        "type": "github"
+      }
+    },
+    "nvim-treesitter-parser-registry": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1776106412,
+        "narHash": "sha256-pIion0ETIhP741V8Vlg/6Y5HV385cp76/ITUS8ttrdE=",
+        "owner": "neovim-treesitter",
+        "repo": "treesitter-parser-registry",
+        "rev": "6eb15358bb9fc88f0d3401d8538d56652e9bdf3c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "neovim-treesitter",
+        "repo": "treesitter-parser-registry",
         "type": "github"
       }
     },
@@ -1085,6 +1100,7 @@
         "nvim-surround": "nvim-surround",
         "nvim-tree-lua": "nvim-tree-lua",
         "nvim-treesitter": "nvim-treesitter",
+        "nvim-treesitter-parser-registry": "nvim-treesitter-parser-registry",
         "nvim-unception": "nvim-unception",
         "nvim-web-devicons": "nvim-web-devicons",
         "nvim_context_vt": "nvim_context_vt",

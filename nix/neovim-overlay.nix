@@ -63,6 +63,7 @@ let
     nvim-lsp-notify
     indent-blankline-nvim
     nvim-treesitter
+    nvim-treesitter-parser-registry
     noice-nvim
     nvim-metals
     cmp-nvim-lsp

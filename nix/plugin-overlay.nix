@@ -46,6 +46,7 @@ in
     nvim-lsp-notify = mkNvimPlugin inputs.nvim-lsp-notify "nvim-lsp-notify";
     indent-blankline-nvim = mkNvimPlugin inputs.indent-blankline-nvim "indent-blankline-nvim";
     nvim-treesitter = mkNvimPlugin inputs.nvim-treesitter "nvim-treesitter";
+    nvim-treesitter-parser-registry = mkNvimPlugin inputs.nvim-treesitter-parser-registry "nvim-treesitter-parser-registry";
     noice-nvim = mkNvimPlugin inputs.noice-nvim "noice-nvim";
     nvim-metals = mkNvimPlugin inputs.nvim-metals "nvim-metals";
     cmp-nvim-lsp = mkNvimPlugin inputs.cmp-nvim-lsp "cmp-nvim-lsp";
