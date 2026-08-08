@@ -86,8 +86,7 @@ vim.opt.jumpoptions = 'stack,view'
 
 vim.opt.termguicolors = true
 vim.opt.list = true
-vim.opt.listchars:append('space:·, nbsp:␣')
-
+vim.opt.listchars:append("space:·,nbsp:␣")
 --autosave
 g.auto_save = true
 g.auto_save_silent = true
