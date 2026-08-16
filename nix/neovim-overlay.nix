@@ -64,6 +64,7 @@ let
     indent-blankline-nvim
     nvim-treesitter
     nvim-treesitter-parser-registry
+    markview-nvim
     noice-nvim
     nvim-metals
     cmp-nvim-lsp

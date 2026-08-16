@@ -524,6 +524,22 @@
         "type": "github"
       }
     },
+    "markview-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1786690272,
+        "narHash": "sha256-5Uc4BsnM9RaiaOey34rPAS2d5RQ9615NYRuAz+zd9ws=",
+        "owner": "OXY2DEV",
+        "repo": "markview.nvim",
+        "rev": "5d9fc2aa6dd1c2fbdc7a68bc79b300e9967b21ff",
+        "type": "github"
+      },
+      "original": {
+        "owner": "OXY2DEV",
+        "repo": "markview.nvim",
+        "type": "github"
+      }
+    },
     "neotest": {
       "flake": false,
       "locked": {
@@ -1079,6 +1095,7 @@
         "lualine-nvim": "lualine-nvim",
         "luasnip": "luasnip",
         "luxterm-nvim": "luxterm-nvim",
+        "markview-nvim": "markview-nvim",
         "neotest": "neotest",
         "neotest-plenary": "neotest-plenary",
         "neotest-scala": "neotest-scala",

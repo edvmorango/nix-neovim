@@ -126,6 +126,10 @@
       url = "github:neovim-treesitter/treesitter-parser-registry";
       flake = false;
     };
+    markview-nvim = {
+      url = "github:OXY2DEV/markview.nvim";
+      flake = false;
+    };
 
     noice-nvim = {
       url = "github:folke/noice.nvim";
