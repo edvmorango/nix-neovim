@@ -301,11 +301,6 @@
       flake = false;
     };
 
-    gitsigns-nvim = {
-      url = "github:lewis6991/gitsigns.nvim";
-      flake = false;
-    };
-
     nvim-unception = {
       url = "github:samjwill/nvim-unception";
       flake = false;
@@ -318,6 +313,11 @@
 
     evergarden = {
       url = "github:comfysage/evergarden";
+      flake = false;
+    };
+
+    mini-diff-nvim = {
+      url = "github:nvim-mini/mini.diff";
       flake = false;
     };
   };

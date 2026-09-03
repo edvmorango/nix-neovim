@@ -26,7 +26,6 @@ in
     evergarden = mkNvimPlugin inputs.evergarden "evergarden";
     nvim-unception = mkNvimPlugin inputs.nvim-unception "nvim-unception";
     nvim-surround = mkNvimPlugin inputs.nvim-surround "nvim-surround";
-    gitsigns-nvim = mkNvimPlugin inputs.gitsigns-nvim "gitsigns-nvim";
     substitute-nvim = mkNvimPlugin inputs.substitute-nvim "substitute-nvim";
     luasnip = mkNvimPlugin inputs.luasnip "luasnip";
     nvim-notify = mkNvimPlugin inputs.nvim-notify "nvim-notify";
@@ -87,5 +86,6 @@ in
     telescope-glyph-nvim = mkNvimPlugin inputs.telescope-glyph-nvim "telescope-glyph-nvim";
     telescope-symbols-nvim = mkNvimPlugin inputs.telescope-symbols-nvim "telescope-symbols-nvim";
     telescope-rooter-nvim = mkNvimPlugin inputs.telescope-rooter-nvim "telescope-rooter-nvim";
+    mini-diff-nvim = mkNvimPlugin inputs.mini-diff-nvim "mini-diff-nvim";
   };
 }

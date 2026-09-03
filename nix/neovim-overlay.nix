@@ -44,7 +44,7 @@ let
     evergarden
     nvim-unception
     nvim-surround
-    gitsigns-nvim
+    mini-diff-nvim
     substitute-nvim
     luasnip
     nvim-notify

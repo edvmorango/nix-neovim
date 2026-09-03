@@ -53,10 +53,20 @@ end
 vim.keymap.set('n', 't', ibl_toggle)
 --Map('n', 't', '<cmd>IBLToggle<CR>')
 -- git
-local gitsigns = require('gitsigns')
+--local gitsigns = require('gitsigns')
 
-gitsigns.setup()
+--gitsigns.setup()
+local minidiff = require("mini.diff")
 
+minidiff.setup {
+
+  view = {
+    style = 'sign',
+
+    signs = { add = '+', change = '~', delete = '-' },
+
+  }
+}
 
 vim.o.updatetime = 100
 

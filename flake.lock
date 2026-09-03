@@ -332,22 +332,6 @@
         "type": "github"
       }
     },
-    "gitsigns-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1784038109,
-        "narHash": "sha256-dtfk6Fiq71jxTfJBO+ptjT54uUbiv9QAN3V7/sEuGUw=",
-        "owner": "lewis6991",
-        "repo": "gitsigns.nvim",
-        "rev": "31d6fb2d618bca1482b9f274751ead5f03461408",
-        "type": "github"
-      },
-      "original": {
-        "owner": "lewis6991",
-        "repo": "gitsigns.nvim",
-        "type": "github"
-      }
-    },
     "highlight-undo-nvim": {
       "flake": false,
       "locked": {
@@ -537,6 +521,22 @@
       "original": {
         "owner": "OXY2DEV",
         "repo": "markview.nvim",
+        "type": "github"
+      }
+    },
+    "mini-diff-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1785416253,
+        "narHash": "sha256-DAsRzWaP116ngHzYFxJYChDlNvt1edMeqXeQeSPXskU=",
+        "owner": "nvim-mini",
+        "repo": "mini.diff",
+        "rev": "626b8a5b93874c4d05ca25aedec56cfff0b378fb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-mini",
+        "repo": "mini.diff",
         "type": "github"
       }
     },
@@ -1084,7 +1084,6 @@
         "flake-utils": "flake-utils",
         "floatty-nvim": "floatty-nvim",
         "gen-luarc": "gen-luarc",
-        "gitsigns-nvim": "gitsigns-nvim",
         "highlight-undo-nvim": "highlight-undo-nvim",
         "hlargs-nvim": "hlargs-nvim",
         "hover-nvim": "hover-nvim",
@@ -1096,6 +1095,7 @@
         "luasnip": "luasnip",
         "luxterm-nvim": "luxterm-nvim",
         "markview-nvim": "markview-nvim",
+        "mini-diff-nvim": "mini-diff-nvim",
         "neotest": "neotest",
         "neotest-plenary": "neotest-plenary",
         "neotest-scala": "neotest-scala",
