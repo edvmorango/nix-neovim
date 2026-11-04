@@ -32,22 +32,6 @@
         "type": "github"
       }
     },
-    "charleston-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1785662290,
-        "narHash": "sha256-x37sokumxD+3w4gzfjn2bP1baIdpAXLio63Lej1Qnxs=",
-        "owner": "RomanAverin",
-        "repo": "charleston.nvim",
-        "rev": "dc236aebff1b004f0e3ed8e9c21890c0df7c0c8b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "RomanAverin",
-        "repo": "charleston.nvim",
-        "type": "github"
-      }
-    },
     "cmp-luasnip": {
       "flake": false,
       "locked": {
@@ -1020,22 +1004,6 @@
         "type": "github"
       }
     },
-    "nvim_context_vt": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1785785846,
-        "narHash": "sha256-3HsqWXAtNz1I+E268T3A/BlnMD/rB1AZxk1VpOks0Vc=",
-        "owner": "andersevenrud",
-        "repo": "nvim_context_vt",
-        "rev": "74c5ec8786426c5458e1a9f6b8b2fd6977ba01ab",
-        "type": "github"
-      },
-      "original": {
-        "owner": "andersevenrud",
-        "repo": "nvim_context_vt",
-        "type": "github"
-      }
-    },
     "onenord-nvim": {
       "flake": false,
       "locked": {
@@ -1072,7 +1040,6 @@
       "inputs": {
         "actions-preview-nvim": "actions-preview-nvim",
         "autoclose-nvim": "autoclose-nvim",
-        "charleston-nvim": "charleston-nvim",
         "cmp-luasnip": "cmp-luasnip",
         "cmp-nvim-lsp": "cmp-nvim-lsp",
         "conform-nvim": "conform-nvim",
@@ -1120,7 +1087,6 @@
         "nvim-treesitter-parser-registry": "nvim-treesitter-parser-registry",
         "nvim-unception": "nvim-unception",
         "nvim-web-devicons": "nvim-web-devicons",
-        "nvim_context_vt": "nvim_context_vt",
         "onenord-nvim": "onenord-nvim",
         "plenary-nvim": "plenary-nvim",
         "rust-overlay": "rust-overlay",

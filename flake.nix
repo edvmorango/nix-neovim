@@ -42,11 +42,6 @@
       flake = false;
     };
 
-    charleston-nvim = {
-      url = "github:RomanAverin/charleston.nvim";
-      flake = false;
-    };
-
     vague-nvim = {
       url = "github:vague2k/vague.nvim";
       flake = false;
@@ -100,10 +95,6 @@
     };
     nvim-rooter-lua = {
       url = "github:notjedi/nvim-rooter.lua";
-      flake = false;
-    };
-    nvim_context_vt = {
-      url = "github:andersevenrud/nvim_context_vt";
       flake = false;
     };
     fidget-nvim = {

@@ -16,12 +16,10 @@ in
     smart-paste-nvim = mkNvimPlugin inputs.smart-paste-nvim "smart-paste-nvim";
     luxterm-nvim = mkNvimPlugin inputs.luxterm-nvim "luxterm-nvim";
     teide-nvim = mkNvimPlugin inputs.teide-nvim "teide-nvim";
-    opencode-nvim = prev.pkgs.vimplugin-opencode.nvim;
     blink-cmp = prev.pkgs.vimPlugins.blink-cmp;
     toggle-term = prev.pkgs.vimPlugins.toggleterm-nvim;
     tla-nvim = mkNvimPlugin inputs.tla-nvim "tla-nvim";
     hover-nvim = mkNvimPlugin inputs.hover-nvim "hover-nvim";
-    charleston-nvim = mkNvimPlugin inputs.charleston-nvim "charleston-nvim";
     vague-nvim = mkNvimPlugin inputs.vague-nvim "vague-nvim";
     evergarden = mkNvimPlugin inputs.evergarden "evergarden";
     nvim-unception = mkNvimPlugin inputs.nvim-unception "nvim-unception";

@@ -38,7 +38,6 @@ let
     teide-nvim
     tla-nvim
     hover-nvim
-    #charleston-nvim
     blink-cmp
     vague-nvim
     evergarden
