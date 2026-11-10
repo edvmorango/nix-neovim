@@ -200,7 +200,7 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
       eject = true,
       resize_window = true,
       window_picker = {
-        enable = true,
+        enable = false,
         picker = 'default',
         chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890',
         exclude = {
