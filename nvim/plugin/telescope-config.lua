@@ -184,6 +184,12 @@ local function telescope_server_ui()
   local current_file = vim.bo.filetype
   if current_file == 'scala' or current_file == 'sbt' then
     require('telescope').extensions.metals.commands(TelescopeLayoutConfigVertical)
+  elseif current_file == 'rust' then
+    local rust = require('user.rust')
+    rust.commands(TelescopeLayoutConfigVertical, rust.rust_commands, 'Rust Commands')
+  elseif vim.fn.expand('%:t') == 'Cargo.toml' then
+    local rust = require('user.rust')
+    rust.commands(TelescopeLayoutConfigVertical, rust.cargo_commands, 'Cargo Commands')
   end
 end
 

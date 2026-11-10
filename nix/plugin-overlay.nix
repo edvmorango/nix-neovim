@@ -17,6 +17,8 @@ in
     luxterm-nvim = mkNvimPlugin inputs.luxterm-nvim "luxterm-nvim";
     teide-nvim = mkNvimPlugin inputs.teide-nvim "teide-nvim";
     blink-cmp = prev.pkgs.vimPlugins.blink-cmp;
+    rustaceanvim = prev.pkgs.vimPlugins.rustaceanvim;
+    crates-nvim = prev.pkgs.vimPlugins.crates-nvim;
     toggle-term = prev.pkgs.vimPlugins.toggleterm-nvim;
     tla-nvim = mkNvimPlugin inputs.tla-nvim "tla-nvim";
     hover-nvim = mkNvimPlugin inputs.hover-nvim "hover-nvim";

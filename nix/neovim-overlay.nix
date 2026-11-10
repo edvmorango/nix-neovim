@@ -66,6 +66,8 @@ let
     markview-nvim
     noice-nvim
     nvim-metals
+    rustaceanvim
+    crates-nvim
     cmp-nvim-lsp
     nvim-tree-lua
     nvim-web-devicons
